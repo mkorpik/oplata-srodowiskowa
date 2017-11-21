@@ -12,7 +12,6 @@ Ext.define('Oplaty.components.main.Main', {
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
-
         'Oplaty.components.main.MainController',
         'Oplaty.components.main.MainModel',
         'Oplaty.components.main.List',
@@ -82,11 +81,10 @@ Ext.define('Oplaty.components.main.Main', {
         items: [{
             title: 'Firmy',
             iconCls: 'fa-home',
-            // The following grid shares a store with the classic version's grid as well!
             items: [{
                 xtype: 'companyList'
             }]
-        }, {
+        },{
             title: 'Pojazdy',
             iconCls: 'fa-user',
             items: [{

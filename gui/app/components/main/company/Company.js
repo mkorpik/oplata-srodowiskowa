@@ -9,15 +9,14 @@ Ext.define('Oplaty.components.main.company.Company', {
         'Ext.form.field.Date',
         'Ext.form.field.Text',
         'Ext.form.field.TextArea',
+        'Oplaty.components.main.company.CompanyViewModel'
         // 'Todo.view.tasks.TaskFormController',
         // 'Todo.view.tasks.TaskFormModel',
         // 'Todo.view.PercentTextField'
     ],
 
-    viewModel: {
-        type: 'TaskFormModel'
-    },
-    controller: 'TaskFormController',
+    controller: 'company',
+    viewModel: 'company',
 
     listeners: {
         close: 'onClose'
@@ -30,7 +29,7 @@ Ext.define('Oplaty.components.main.company.Company', {
     center: true,
     autoShow: true,
     title: {
-        bind: '{taskRecord.title}'
+        bind: '{editCompany.name}'
     },
     bodyPadding: 20,
     defaults: {
@@ -39,45 +38,34 @@ Ext.define('Oplaty.components.main.company.Company', {
     },
     items: [
         {
-            xtype: 'textfield',
-            name: 'title',
-            bind: '{taskRecord.title}',
-            fieldLabel: 'Title'
-        },
-        {
             xtype: 'textarea',
-            name: 'description',
-            bind: '{taskRecord.description}',
-            fieldLabel: 'Description'
-        },
-        {
-            xtype: 'datefield',
-            name: 'dueDate',
-            bind: '{taskRecord.dueDate}',
-            dateFormat: 'd/m/Y',
-            fieldLabel: 'Due Date'
+            name: 'name',
+            bind: '{editCompany.name}',
+            fieldLabel: 'Nazwa'
         },
         {
             xtype: 'textfield',
-            name: 'progess',
-            bind: '{taskprogress}',
-            fieldLabel: 'Progress'
+            name: 'nip',
+            bind: '{editCompany.nip}',
+            fieldLabel: 'NIP'
+        },
+        {
+            xtype: 'textfield',
+            name: 'city',
+            bind: '{editCompany.city}',
+            fieldLabel: 'Miejscowość'
         },
         {
             xtype: 'button',
-            text: 'Save',
+            text: 'Zapisz',
             margin: '5 0',
             handler: 'onSave'
         },
         {
             xtype: 'button',
-            text: 'Delete',
+            text: 'Zamknij',
             margin: '5 0',
-            handler: 'onDelete',
-            hidden: true,
-            bind: {
-                hidden: '{!taskRecord.description}'
-            }
+            handler: 'onCancel'
         }
     ]
 

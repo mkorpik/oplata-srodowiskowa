@@ -3,7 +3,7 @@ Ext.define('Oplaty.components.main.mobile.MobileMenu', {
     xtype: 'mobileMenu',
 
     requires: [
-        'Oplaty.components.main.mobile.MobileList'
+        'Oplaty.components.main.mobile.mobiles.MobileList'
     ],
 
     items: [{

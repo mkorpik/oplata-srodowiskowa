@@ -9,7 +9,8 @@ Ext.define('Oplaty.components.main.company.Company', {
         'Ext.form.field.Date',
         'Ext.form.field.Text',
         'Ext.form.field.TextArea',
-        'Oplaty.components.main.company.CompanyViewModel'
+        'Oplaty.components.main.company.CompanyViewModel',
+        'Oplaty.components.main.company.CompanyController'
         // 'Todo.view.tasks.TaskFormController',
         // 'Todo.view.tasks.TaskFormModel',
         // 'Todo.view.PercentTextField'
@@ -18,9 +19,6 @@ Ext.define('Oplaty.components.main.company.Company', {
     controller: 'company',
     viewModel: 'company',
 
-    listeners: {
-        close: 'onClose'
-    },
     modal: true,
     floating: true,
     closable: true,

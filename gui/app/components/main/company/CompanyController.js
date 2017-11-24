@@ -3,9 +3,15 @@ Ext.define('Oplaty.components.main.company.CompanyController', {
 
     alias: 'controller.company',
 
-    onItemSelected: function (sender, record) {
-        var store = this.getViewModel().getStore('companyList');
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+    onSave: function () {
+        var record = this.getViewModel().get('editCompany');
+        this.fireEvent('saveCompany', record);
+        this.getView().close();
+    },
+
+    onCancel: function () {
+        this.getView().close();
     }
+
 
 });

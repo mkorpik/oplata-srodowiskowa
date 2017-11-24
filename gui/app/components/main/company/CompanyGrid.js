@@ -10,15 +10,25 @@ Ext.define('Oplaty.components.main.company.CompanyGrid', {
         type: 'company'
     },
 
-    //store: Ext.create('Oplaty.components.main.company.CompanyStore'),
-    // bind: {
-    //     store: '{companyList}'
-    // },
     columns: [
-        { text: 'Nazwa',  dataIndex: 'name' },
-        { bind: {text: '{nip}'}, dataIndex: 'nip'},
-        { text: 'Województwo', dataIndex: 'voivodship'},
-        { text: 'Mejscowość', dataIndex: 'city'}
-    ]        
-
+        {
+            text: 'Nazwa',
+            dataIndex: 'name',
+            flex: 3
+        },{
+            bind: {
+                text: '{nip}'
+            },
+            dataIndex: 'nip',
+            flex: 2
+        },{
+            text: 'Województwo',
+            dataIndex: 'voivodship',
+            flex: 3
+        },{ 
+            text: 'Mejscowość', 
+            dataIndex: 'city',
+            flex: 3
+        }
+    ]
 });

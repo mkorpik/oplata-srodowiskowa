@@ -13,28 +13,41 @@ Ext.define('Oplaty.components.main.company.CompanyList', {
         'Oplaty.components.main.List'
     ],
 
-    title: 'Company main',
-
     layout: {
         type: 'hbox',
         align: 'left'
     },
     items: [{
         xtype: 'companyGrid',
-        flex: 2
+        itemId: 'idCompanyGrid',
+        listeners: {
+            rowdblclick: 'onRowDblClick'
+        },
+        width: 600,        
+        //flex: 2,
+        align: 'right'
     },{
         xtype: 'panel',
-        flex: 1,
+        width: 110,        
+        //flex: 1,
         layout: {
-            type: 'vbox',
-            align: 'left'
+            // type: 'vbox',
+            // align: 'center'
+            type: 'table',
+            columns: 1,
+            tdAttrs: {
+                style: 'padding: 5px 10px;'
+            }            
+        },
+        defaults: {
+            width: 90
         },
         items: [{
             xtype: 'button',
             bind:{
                 text: '{addBtn}'
             },
-            handler: 'onAddCompany'           
+            handler: 'onAddCompany'      
         },{
             xtype: 'button',
             text: 'Edytuj'
@@ -43,8 +56,4 @@ Ext.define('Oplaty.components.main.company.CompanyList', {
             text: 'Usuń'
         }]
     }]
-    // requires: [
-    //     'Oplaty.store.Personnel'
-    // ],
-
 });

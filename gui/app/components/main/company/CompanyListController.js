@@ -11,27 +11,49 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
         }
     },    
 
-
-    onItemSelected: function (sender, record) {
-        var store = this.getViewModel().getStore('companyList');
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+    onAddCompany: function () {
+        var me = this,
+            newCompany = Ext.create('Oplaty.components.main.company.CompanyModel', {            
+            });
+        this.showEditForm(newCompany);
     },
 
-    onAddCompany: function (sender) {
-        var me = this,
-            companyForm = Ext.create('Oplaty.components.main.company.Company',{
-        //    renderTo: 'companyListId'
-        }),        
-            newRecord = Ext.create('Oplaty.components.main.company.CompanyModel', {
-                
-            });
-        companyForm.getViewModel().set('editCompany', newRecord);
+    onEditCompany: function () {
+        var selectedCompanies = this.getCompanyGrid().getSelection();
+        if (selectedCompanies.length === 1) {
+            this.showEditForm(selectedCompanies[0].copy());
+        } else {
+            Ext.Msg.alert('Info', 'Należy zaznaczyć wiersz.');
+        }
+    },
+
+    onDeleteCompany: function () {
+        var selectedCompanies = this.getCompanyGrid().getSelection();
+        if (selectedCompanies.length === 1) {
+            Ext.Msg.confirm('Uwaga', 'Czy na pewno usunąć firmę?', 'deleteCompany', this);  
+        } else {
+            Ext.Msg.alert('Info', 'Należy zaznaczyć wiersz.');
+        }
+    },
+
+    deleteCompany: function (btn) {
+        var store = this.getViewModel().getStore('companyList'),
+        selectedCompanies = this.getCompanyGrid().getSelection();
+        if (btn === 'yes') {
+            store.remove(selectedCompanies[0]);
+            this.getCompanyGrid().reconfigure(store);
+        }
     },
 
     onRowDblClick: function (grid, record) {
-        var taskForm = Ext.create('Oplaty.components.main.company.Company'),
-        cloneC = record.copy();
-        taskForm.getViewModel().set('editCompany', cloneC);
+        this.showEditForm(record.copy());
+    },
+
+    showEditForm: function (companyRecord) {
+        var companyForm = Ext.create('Oplaty.components.main.company.Company',{
+            //    renderTo: 'companyListId'
+            }); 
+        companyForm.getViewModel().set('editCompany', companyRecord);            
     },
 
     saveCompany: function(record) {
@@ -46,7 +68,16 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
             store.add(record);
             record.commit();
         }
-        this.getView().down('#idCompanyGrid').reconfigure(store);
+        this.getCompanyGrid().reconfigure(store);
+    },
+
+    getCompanyGrid: function() {
+        return this.getView().down('#idCompanyGrid');
+    },
+
+    onItemSelected: function (sender, record) {
+        var store = this.getViewModel().getStore('companyList');
+        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     }
 
 });

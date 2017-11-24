@@ -24,15 +24,11 @@ Ext.define('Oplaty.components.main.company.CompanyList', {
             rowdblclick: 'onRowDblClick'
         },
         width: 600,        
-        //flex: 2,
         align: 'right'
     },{
         xtype: 'panel',
         width: 110,        
-        //flex: 1,
         layout: {
-            // type: 'vbox',
-            // align: 'center'
             type: 'table',
             columns: 1,
             tdAttrs: {
@@ -47,13 +43,15 @@ Ext.define('Oplaty.components.main.company.CompanyList', {
             bind:{
                 text: '{addBtn}'
             },
-            handler: 'onAddCompany'      
+            handler: 'onAddCompany'
         },{
             xtype: 'button',
-            text: 'Edytuj'
+            text: 'Edytuj',
+            handler: 'onEditCompany'
         },{
             xtype: 'button',
-            text: 'Usuń'
+            text: 'Usuń',
+            handler: 'onDeleteCompany'
         }]
     }]
 });

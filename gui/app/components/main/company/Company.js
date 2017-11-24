@@ -11,9 +11,6 @@ Ext.define('Oplaty.components.main.company.Company', {
         'Ext.form.field.TextArea',
         'Oplaty.components.main.company.CompanyViewModel',
         'Oplaty.components.main.company.CompanyController'
-        // 'Todo.view.tasks.TaskFormController',
-        // 'Todo.view.tasks.TaskFormModel',
-        // 'Todo.view.PercentTextField'
     ],
 
     controller: 'company',

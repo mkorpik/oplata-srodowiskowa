@@ -13,5 +13,4 @@ Ext.define('Oplaty.components.main.company.CompanyController', {
         this.getView().close();
     }
 
-
 });

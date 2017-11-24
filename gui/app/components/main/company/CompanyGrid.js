@@ -3,8 +3,7 @@ Ext.define('Oplaty.components.main.company.CompanyGrid', {
     xtype: 'companyGrid',
 
     require: [
-        'Oplaty.components.main.company.CompanyStore',
-        'Oplaty.store.Personnel'
+        'Oplaty.components.main.company.CompanyStore'
     ],
     store: {
         type: 'company'
@@ -16,9 +15,7 @@ Ext.define('Oplaty.components.main.company.CompanyGrid', {
             dataIndex: 'name',
             flex: 3
         },{
-            bind: {
-                text: '{nip}'
-            },
+            text: 'NIP',
             dataIndex: 'nip',
             flex: 2
         },{

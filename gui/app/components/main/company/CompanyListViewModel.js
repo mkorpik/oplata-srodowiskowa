@@ -1,4 +1,4 @@
-Ext.define('Oplaty.components.main.company.CompanyStore.CompanyListViewModel', {
+Ext.define('Oplaty.components.main.company.CompanyListViewModel', {
     extend: 'Ext.app.ViewModel',
     alias: 'viewmodel.companyList',
 
@@ -7,9 +7,7 @@ Ext.define('Oplaty.components.main.company.CompanyStore.CompanyListViewModel', {
     ],
 
     data: {
-        addBtn: 'Dodaj',
-        nip: 'NIP',
-        editCompany: ''
+
     },
 
     stores: {

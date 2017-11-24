@@ -1,7 +1,7 @@
 Ext.define('Oplaty.components.main.company.CompanyListController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.companyListC',
+    alias: 'controller.companyList',
 
     listen: {
         controller: {
@@ -73,11 +73,5 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
 
     getCompanyGrid: function() {
         return this.getView().down('#idCompanyGrid');
-    },
-
-    onItemSelected: function (sender, record) {
-        var store = this.getViewModel().getStore('companyList');
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
     }
-
 });

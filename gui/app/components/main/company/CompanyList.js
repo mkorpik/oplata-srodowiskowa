@@ -4,13 +4,12 @@ Ext.define('Oplaty.components.main.company.CompanyList', {
     id: 'companyListId',
 
     viewModel: 'companyList',
-    controller: 'companyListC',
+    controller: 'companyList',
 
     require: [
         'Oplaty.components.main.company.CompanyGrid',
         'Oplaty.components.main.company.CompanyListViewModel',
-        'Oplaty.components.main.company.CompanyListController',
-        'Oplaty.components.main.List'
+        'Oplaty.components.main.company.CompanyListController'
     ],
 
     layout: {
@@ -40,9 +39,7 @@ Ext.define('Oplaty.components.main.company.CompanyList', {
         },
         items: [{
             xtype: 'button',
-            bind:{
-                text: '{addBtn}'
-            },
+            text: 'Dodaj',            
             handler: 'onAddCompany'
         },{
             xtype: 'button',

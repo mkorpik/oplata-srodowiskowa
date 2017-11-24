@@ -5,5 +5,4 @@ Ext.define('Oplaty.components.main.company.CompanyViewModel', {
     data: {
         editCompany: null
     }
-
 });

@@ -77,7 +77,7 @@ Ext.define('Oplaty.components.main.Main', {
         },    
         items: [{
             title: 'Firmy',
-            iconCls: 'fa-industry',
+            iconCls: 'fa-briefcase',
             items: [{
                 xtype: 'companyList'
             }]

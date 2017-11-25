@@ -37,7 +37,7 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
     },
 
     deleteCompany: function (btn) {
-        var store = this.getViewModel().getStore('companyList'),
+        var store = this.getCompanyStore(),
         selectedCompanies = this.getCompanyGrid().getSelection();
         if (btn === 'yes') {
             store.remove(selectedCompanies[0]);
@@ -57,7 +57,7 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
     },
 
     saveCompany: function(record) {
-        var store = this.getViewModel().getStore('companyList'),
+        var store = this.getCompanyStore(),
         company = record.data,
         findCompany = store.findRecord('id', company.id);
         if (findCompany) {
@@ -73,5 +73,9 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
 
     getCompanyGrid: function() {
         return this.getView().down('#idCompanyGrid');
+    },
+
+    getCompanyStore: function () {
+        return this.getView().lookupViewModel().getStore('companyList');
     }
 });

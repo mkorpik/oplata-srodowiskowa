@@ -3,7 +3,7 @@ Ext.define('Oplaty.components.main.company.CompanyList', {
     xtype: 'companyList',
     id: 'companyListId',
 
-    viewModel: 'companyList',
+//    viewModel: 'companyList',
     controller: 'companyList',
 
     require: [

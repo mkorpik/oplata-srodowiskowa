@@ -9,7 +9,7 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
         'Oplaty.components.main.fee.FeeMenuViewModel'
     ],
 
-    viewModel: 'feeMenu',
+//    viewModel: 'feeMenu',
 
     layout: {
         type: 'vbox'
@@ -26,6 +26,7 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     displayField: 'name',
                     valueField: 'id',
                     forceSelection: true,    
+                    editable: false,
                     bind: {
                         store: '{companyList}'
                     }
@@ -35,9 +36,10 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     fieldLabel: 'Okres rozliczeniowy',
                     displayField: 'name',
                     valueField: 'id',
-                    forceSelection: true,    
+                    forceSelection: true,
+                    editable: false,
                     bind: {
-                        store: '{companyList}'
+                        store: '{periodList}'
                     }
                 },
                 {
@@ -75,14 +77,14 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
             },                                  
             items: [{
                 title: 'Oddziały',
-                iconCls: 'fa-file-text',
+                iconCls: 'fa-industry',
                 bind: {
                     html: '{loremIpsum}'
                 }        
             },
             {
                 title: 'Pojazdy',
-                iconCls: 'fa-automobile',
+                iconCls: 'fa-truck',
                 items: [{
                     xtype: 'mobileMenu'
                 }]

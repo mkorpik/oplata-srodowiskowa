@@ -16,9 +16,7 @@ Ext.define('Oplaty.components.main.Main', {
         'Oplaty.components.main.MainModel',
         'Oplaty.components.main.List',
         'Oplaty.components.main.company.CompanyList',
-        'Oplaty.components.main.mobile.MobileMenu',
-        'Oplaty.components.main.cauldron.CauldronMenu',
-        'Oplaty.components.main.rainwater.RainwaterMenu'
+        'Oplaty.components.main.fee.FeeMenu'
     ],
 
     controller: 'main',
@@ -34,9 +32,6 @@ Ext.define('Oplaty.components.main.Main', {
     },
 
     items: [{
-        xtype: 'panel',
-        title: 'Nagłowek'
-    },{
         xtype: 'tabpanel',
         height: 600,
         tabBarHeaderPosition: 1,
@@ -87,29 +82,14 @@ Ext.define('Oplaty.components.main.Main', {
                 xtype: 'companyList'
             }]
         },{
-            title: 'Pojazdy',
-            iconCls: 'fa-automobile',
+            title: 'Opłaty',
+            iconCls: 'fa-calculator',
             items: [{
-                xtype: 'mobileMenu'
+                xtype: 'feeMenu'
             }]
-        }, {
-            title: 'Kotły',
-            iconCls: 'fa-steam',
-            items: [{
-                xtype: 'cauldronMenu'
-            }]
-        }, {
-            title: 'Wody opadowe',
-            iconCls: ' fa-cloud',
-            items: [{
-                xtype: 'rainwaterMenu'
-            }]
-        }, {
-            title: 'Sprawozdania',
-            iconCls: 'fa-file-text',
-            bind: {
-                html: '{loremIpsum}'
-            }
+        },{
+            title: 'Ustawienia',
+            iconCls: 'fa-wrench'
         }]
    }]
 });

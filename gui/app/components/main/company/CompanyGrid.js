@@ -5,9 +5,12 @@ Ext.define('Oplaty.components.main.company.CompanyGrid', {
     require: [
         'Oplaty.components.main.company.CompanyStore'
     ],
-    store: {
-        type: 'company'
+    bind:{
+        store: '{companyList}'
     },
+    // store: {
+    //     type: 'company'
+    // },
 
     columns: [
         {

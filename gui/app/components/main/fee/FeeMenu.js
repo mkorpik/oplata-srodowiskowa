@@ -3,6 +3,7 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
     xtype: 'feeMenu',
 
     requires: [
+        'Oplaty.components.main.department.DepartmentList',
         'Oplaty.components.main.mobile.MobileMenu',
         'Oplaty.components.main.cauldron.CauldronMenu',
         'Oplaty.components.main.rainwater.RainwaterMenu',
@@ -78,9 +79,9 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
             items: [{
                 title: 'Oddziały',
                 iconCls: 'fa-industry',
-                bind: {
-                    html: '{loremIpsum}'
-                }        
+                items: [{
+                    xtype: 'departmentList'
+                }]      
             },
             {
                 title: 'Pojazdy',

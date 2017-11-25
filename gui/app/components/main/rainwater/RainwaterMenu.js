@@ -3,7 +3,7 @@ Ext.define('Oplaty.components.main.rainwater.RainwaterMenu', {
     xtype: 'rainwaterMenu',
 
     requires: [
-        'Oplaty.components.main.rainwater.RainwaterList'
+        'Oplaty.components.main.rainwater.rainwaters.RainwaterList'
     ],
 
     items: [{

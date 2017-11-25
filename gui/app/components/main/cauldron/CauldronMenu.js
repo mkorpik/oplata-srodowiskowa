@@ -3,7 +3,7 @@ Ext.define('Oplaty.components.main.cauldron.CauldronMenu', {
     xtype: 'cauldronMenu',
 
     requires: [
-        'Oplaty.components.main.cauldron.CauldronList'
+        'Oplaty.components.main.cauldron.cauldrons.CauldronList'
     ],
 
     items: [{

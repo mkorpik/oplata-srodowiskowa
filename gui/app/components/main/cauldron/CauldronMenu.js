@@ -3,7 +3,8 @@ Ext.define('Oplaty.components.main.cauldron.CauldronMenu', {
     xtype: 'cauldronMenu',
 
     requires: [
-        'Oplaty.components.main.cauldron.cauldrons.CauldronList'
+        'Oplaty.components.main.cauldron.cauldrons.CauldronList',
+        'Oplaty.components.main.cauldron.fueluse.FuelUseList'
     ],
 
     items: [{
@@ -12,7 +13,10 @@ Ext.define('Oplaty.components.main.cauldron.CauldronMenu', {
             xtype: 'cauldronList'
         }]        
     },{
-        title: 'Zużycie paliwa'
+        title: 'Zużycie paliwa',
+        items: [{
+            xtype: 'cauldronFuelUseList'
+        }]
     },{
         title: 'Opłaty'
     }]

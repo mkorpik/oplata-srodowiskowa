@@ -5,7 +5,7 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseController', {
 
     onSave: function () {
         var record = this.getViewModel().get('editMobileFuelUse');
-        this.fireEvent('saveFuelUse', record);
+        this.fireEvent('saveMobileFuelUse', record);
         this.getView().close();
     },
 

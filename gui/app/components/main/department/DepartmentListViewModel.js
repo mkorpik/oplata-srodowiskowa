@@ -3,7 +3,7 @@ Ext.define('Oplaty.components.main.department.DepartmentListViewModel', {
     alias: 'viewmodel.departmentList',
 
     requires: [
-
+        'Oplaty.components.main.department.DepartmentStore'
     ],
 
     data: {

@@ -91,7 +91,7 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                 }]
             }, {
                 title: 'Kotły',
-                iconCls: 'fa-steam',
+                iconCls: 'fa-fire',
                 items: [{
                     xtype: 'cauldronMenu'
                 }]

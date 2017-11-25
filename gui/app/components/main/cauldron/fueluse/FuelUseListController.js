@@ -1,19 +1,19 @@
-Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
+Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseListController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.mobileFuelUseList',
+    alias: 'controller.cauldronFuelUseList',
 
     listen: {
         controller: {
             '*': {
-                saveMobileFuelUse: 'saveFuelUse'
+                saveCauldronFuelUse: 'saveFuelUse'
             }
         }
     },    
 
     onAddFuelUse: function () {
         var me = this,
-            newFuelUse = Ext.create('Oplaty.components.main.mobile.fueluse.FuelUseModel', {            
+            newFuelUse = Ext.create('Oplaty.components.main.cauldron.fueluse.FuelUseModel', {            
             });
         this.showEditForm(newFuelUse);
     },
@@ -37,7 +37,7 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
     },
 
     deleteFuelUse: function (btn) {
-        var store = this.getViewModel().getStore('mobileFuelUseList'),
+        var store = this.getViewModel().getStore('cauldronFuelUseList'),
         selectedFuelUses = this.getFuelUseGrid().getSelection();
         if (btn === 'yes') {
             store.remove(selectedFuelUses[0]);
@@ -49,22 +49,22 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
         this.showEditForm(record.copy());
     },
 
-    showEditForm: function (mobileFuelUseRecord) {
-        var mobileFuelUseForm = Ext.create('Oplaty.components.main.mobile.fueluse.FuelUse',{
+    showEditForm: function (cauldronFuelUseRecord) {
+        var cauldronFuelUseForm = Ext.create('Oplaty.components.main.cauldron.fueluse.FuelUse',{
             //    renderTo: 'fuelUseListId'
             }); 
-            mobileFuelUseForm.getViewModel().set('editMobileFuelUse', mobileFuelUseRecord);            
+            cauldronFuelUseForm.getViewModel().set('editCauldronFuelUse', cauldronFuelUseRecord);            
     },
 
     saveFuelUse: function(record) {
-        var store = this.getViewModel().getStore('mobileFuelUseList'),
-        mobileFuelUse = record.data,
-        findFuelUse = store.findRecord('id', mobileFuelUse.id);
+        var store = this.getViewModel().getStore('cauldronFuelUseList'),
+        cauldronFuelUse = record.data,
+        findFuelUse = store.findRecord('id', cauldronFuelUse.id);
         if (findFuelUse) {
-            findFuelUse.data = mobileFuelUse;
+            findFuelUse.data = cauldronFuelUse;
             record.commit();
         } else {
-            mobileFuelUse.id = store.count() + 1;
+            cauldronFuelUse.id = store.count() + 1;
             store.add(record);
             record.commit();
         }
@@ -72,7 +72,7 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
     },
 
     getFuelUseGrid: function() {
-        return this.getView().down('#idMobileFuelUseGrid');
+        return this.getView().down('#idCauldronFuelUseGrid');
     }
 
 });

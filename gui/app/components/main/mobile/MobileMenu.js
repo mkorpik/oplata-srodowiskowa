@@ -3,7 +3,8 @@ Ext.define('Oplaty.components.main.mobile.MobileMenu', {
     xtype: 'mobileMenu',
 
     requires: [
-        'Oplaty.components.main.mobile.mobiles.MobileList'
+        'Oplaty.components.main.mobile.mobiles.MobileList',
+        'Oplaty.components.main.mobile.fueluse.FuelUseList'
     ],
 
     items: [{
@@ -12,7 +13,10 @@ Ext.define('Oplaty.components.main.mobile.MobileMenu', {
             xtype: 'mobileList'
         }]        
     },{
-        title: 'Zużycie paliwa'
+        title: 'Zużycie paliwa',
+        items: [{
+            xtype: 'mobileFuelUseList'
+        }]
     },{
         title: 'Opłaty'
     }]

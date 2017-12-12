@@ -15,15 +15,15 @@ Ext.define('Oplaty.components.main.company.CompanyGrid', {
     columns: [
         {
             text: 'Nazwa',
-            dataIndex: 'name',
+            dataIndex: 'shortname',
             flex: 3
         },{
             text: 'NIP',
             dataIndex: 'nip',
             flex: 2
         },{
-            text: 'Województwo',
-            dataIndex: 'voivodship',
+            text: 'Ulica',
+            dataIndex: 'street',
             flex: 3
         },{ 
             text: 'Mejscowość', 

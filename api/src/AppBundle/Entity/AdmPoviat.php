@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * AdmPoviat
- *
+ * @ApiResource(attributes={"filters"={"poviat.search_filter"}})
  * @ORM\Table(name="adm_poviat", indexes={@ORM\Index(name="IDX_70CFF6D5172C45F7", columns={"voivodship_id"})})
  * @ORM\Entity
  */
@@ -38,6 +39,54 @@ class AdmPoviat
      * })
      */
     private $voivodship;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return AdmVoivodship
+     */
+    public function getVoivodship()
+    {
+        return $this->voivodship;
+    }
+
+    /**
+     * @param AdmVoivodship $voivodship
+     */
+    public function setVoivodship($voivodship)
+    {
+        $this->voivodship = $voivodship;
+    }
 
 
 }

@@ -24,23 +24,25 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                 {
                     xtype: 'combobox',
                     fieldLabel: 'Aktywna firma',
-                    displayField: 'name',
+                    displayField: 'shortname',
                     valueField: 'id',
                     forceSelection: true,    
                     editable: false,
                     bind: {
-                        store: '{companyList}'
+                        store: '{companyList}',
+                        value: '{companyId}'
                     }
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'Okres rozliczeniowy',
-                    displayField: 'name',
+                    displayField: 'periodName',
                     valueField: 'id',
                     forceSelection: true,
                     editable: false,
                     bind: {
-                        store: '{periodList}'
+                        store: '{periodList}',
+                        value: '{periodId}'
                     }
                 },
                 {

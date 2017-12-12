@@ -1,9 +1,9 @@
-Ext.define('Oplaty.store.Period', {
+Ext.define('Oplaty.store.Poviat', {
     extend: 'Ext.data.Store',
 
-    alias: 'store.period',
+    alias: 'store.poviat',
 
-    model: 'Oplaty.model.PeriodModel',
+    model: 'Oplaty.model.AdmUnitModel',
 
     proxy: {
         type: 'rest',
@@ -11,11 +11,11 @@ Ext.define('Oplaty.store.Period', {
             'Accept': 'application/json',
             'Content-Type': "application/json"
         },
-        url: 'http://api.oplaty-gui.pl/app_dev.php/periods',
+        url: 'http://api.oplaty-gui.pl/app_dev.php/adm_poviats',
         reader: {
             type: 'json'
         }
     },
-    autoLoad: true,
+    autoLoad: false,
     autoSync: false
 });

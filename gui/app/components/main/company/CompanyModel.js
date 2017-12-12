@@ -2,15 +2,16 @@
 Ext.define('Oplaty.components.main.company.CompanyModel', {
     extend: 'Ext.data.Model',
 
-    idProperty: 'internalId',
+    idProperty: 'id',//'internalId',
 
     fields: [
         {
             name: 'id',
-            type: 'int'
+            //type: 'int',
+            type: 'auto', persist: false
         },
         {
-            name: 'name',
+            name: 'shortname',
             type: 'string'
         },
         {
@@ -18,7 +19,7 @@ Ext.define('Oplaty.components.main.company.CompanyModel', {
             type: 'string'
         },
         {
-            name: 'voivodship',
+            name: 'street',
             type: 'string'
         },
         {

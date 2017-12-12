@@ -1,5 +1,5 @@
 
-Ext.define('Oplaty.model.PeriodModel', {
+Ext.define('Oplaty.model.AdmUnitModel', {
     extend: 'Ext.data.Model',
 
     idProperty: 'internalId',
@@ -10,7 +10,7 @@ Ext.define('Oplaty.model.PeriodModel', {
             type: 'int'
         },
         {
-            name: 'periodName',
+            name: 'name',
             type: 'string'
         }
     ]

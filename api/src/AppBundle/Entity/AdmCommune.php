@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * AdmCommune
- *
+ * @ApiResource(attributes={"filters"={"commune.search_filter"}})
  * @ORM\Table(name="adm_commune", indexes={@ORM\Index(name="IDX_7C75D517662DABFB", columns={"poviat_id"})})
  * @ORM\Entity
  */
@@ -38,6 +39,55 @@ class AdmCommune
      * })
      */
     private $poviat;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return AdmPoviat
+     */
+    public function getPoviat()
+    {
+        return $this->poviat;
+    }
+
+    /**
+     * @param AdmPoviat $poviat
+     */
+    public function setPoviat($poviat)
+    {
+        $this->poviat = $poviat;
+    }
+
 
 
 }

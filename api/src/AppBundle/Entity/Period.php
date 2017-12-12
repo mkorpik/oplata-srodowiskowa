@@ -3,10 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Period
  *
+ * @ApiResource
  * @ORM\Table(name="period")
  * @ORM\Entity
  */
@@ -29,6 +31,38 @@ class Period
      */
     private $id;
 
+    /**
+     * @return string
+     */
+    public function getPeriodName()
+    {
+        return $this->periodName;
+    }
 
+    /**
+     * @param string $periodName
+     */
+    public function setPeriodName($periodName)
+    {
+        $this->periodName = $periodName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    
 }
 

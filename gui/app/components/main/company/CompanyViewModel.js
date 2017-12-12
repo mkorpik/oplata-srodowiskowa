@@ -4,5 +4,11 @@ Ext.define('Oplaty.components.main.company.CompanyViewModel', {
 
     data: {
         editCompany: null
+    },
+
+    stores: {
+        voivodshipList: Ext.create('Oplaty.store.Voivodship'),
+        poviatList: Ext.create('Oplaty.store.Poviat'),  
+        communeList: Ext.create('Oplaty.store.Commune')
     }
 });

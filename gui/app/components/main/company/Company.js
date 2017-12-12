@@ -19,12 +19,13 @@ Ext.define('Oplaty.components.main.company.Company', {
     modal: true,
     floating: true,
     closable: true,
+    scrollable: true,
     width: 400,
     height: 500,
     center: true,
     autoShow: true,
     title: {
-        bind: '{editCompany.name}'
+        bind: '{editCompany.shortname}'
     },
     bodyPadding: 20,
     defaults: {
@@ -50,6 +51,53 @@ Ext.define('Oplaty.components.main.company.Company', {
             bind: '{editCompany.city}',
             fieldLabel: 'Miejscowość'
         },
+        {
+            xtype: 'combobox',
+            name: 'voivodship',
+            fieldLabel: 'Województwo',
+            displayField: 'name',
+            valueField: 'id',
+            forceSelection: true,    
+            editable: true,
+            bind: {
+                store: '{voivodshipList}',
+                value: '{editCompany.voivodshipId}'
+            },
+            listeners: {
+                select: 'onVoivodshipChange'
+            }
+        },        
+        {
+            xtype: 'combobox',
+            name: 'poviat',
+            fieldLabel: 'Powiat',
+            displayField: 'name',
+            valueField: 'id',
+            forceSelection: true,
+            editable: true,
+            bind: {
+                store: '{poviatList}',
+                value: '{editCompany.poviatId}',
+                disabled: '{!editCompany.voivodshipId}'
+            },
+            listeners: {
+                select: 'onPoviatChange'
+            }            
+        },
+        {
+            xtype: 'combobox',
+            name: 'commune',
+            fieldLabel: 'Gmina',
+            displayField: 'name',
+            valueField: 'id',
+            forceSelection: true,
+            editable: true,
+            bind: {
+                store: '{communeList}',
+                value: '{editCompany.communeId}',
+                disabled: '{!editCompany.poviatId}'
+            }
+        },        
         {
             xtype: 'button',
             text: 'Zapisz',

@@ -46,7 +46,7 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
     },
 
     onRowDblClick: function (grid, record) {
-        this.showEditForm(record.copy());
+        this.showEditForm(record.clone());
     },
 
     showEditForm: function (companyRecord) {
@@ -61,10 +61,10 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
         company = record.data,
         findCompany = store.findRecord('id', company.id);
         if (findCompany) {
-            findCompany.data = company;
-            record.commit();
+            findCompany.set(company);// = company;            
+            findCompany.commit();
         } else {
-            company.id = store.count() + 1;
+            //company.id = store.count() + 1;
             store.add(record);
             record.commit();
         }

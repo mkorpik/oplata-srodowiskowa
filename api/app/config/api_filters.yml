@@ -6,3 +6,12 @@ services:
     #    parent: 'api_platform.doctrine.orm.search_filter'
     #    arguments: [ { id: 'exact', bar: 'partial' } ]
     #    tags: ['api_platform.filter']
+    poviat.search_filter:
+        parent:  'api_platform.doctrine.orm.search_filter'
+        arguments: [ { voivodship: 'exact' } ]
+        tags: [ 'api_platform.filter' ]
+        
+    commune.search_filter:
+        parent:  'api_platform.doctrine.orm.search_filter'
+        arguments: [ { poviat: 'exact' } ]
+        tags: [ 'api_platform.filter' ]        

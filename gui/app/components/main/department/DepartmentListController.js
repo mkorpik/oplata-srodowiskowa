@@ -14,8 +14,10 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
 
     onAddDepartment: function () {
         var me = this,
-            newDepartment = Ext.create('Oplaty.components.main.department.DepartmentModel', {            
+            newDepartment = Ext.create('Oplaty.components.main.department.DepartmentModel', {
+                
             });
+        newDepartment.set('companyId', this.getActiveCompanyId());    
         this.showEditForm(newDepartment);
     },
 
@@ -54,7 +56,8 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
         var departmentForm = Ext.create('Oplaty.components.main.department.Department',{
             //    renderTo: 'departmentListId'
             }); 
-        departmentForm.getViewModel().set('editDepartment', departmentRecord);            
+        departmentForm.getViewModel().set('editDepartment', departmentRecord);
+        this.fireEvent('companyLoaded');            
     },
 
     saveDepartment: function(record) {
@@ -84,9 +87,13 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
     activeCompanyChange: function () {
         var store = this.getDepartmentStore();
         store.reload();
-        companyId = this.getView().lookupViewModel().get('activeCompanyId');
+        companyId = this.getActiveCompanyId();
         store.proxy.url = OplatyConstants.API_PATH + 'departments?companyId=' + companyId;
         store.reload();
         this.getDepartmentGrid().reconfigure(store);           
+    },
+
+    getActiveCompanyId: function () {
+        return this.getView().lookupViewModel().get('activeCompanyId');
     }
 });

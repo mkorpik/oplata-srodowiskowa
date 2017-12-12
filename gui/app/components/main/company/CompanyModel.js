@@ -6,9 +6,9 @@ Ext.define('Oplaty.components.main.company.CompanyModel', {
 
     fields: [
         {
-            name: 'id',
-            //type: 'int',
-            type: 'auto', persist: false
+            name: 'id',            
+            type: 'auto',
+            persist: false
         },
         {
             name: 'shortname',

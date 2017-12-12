@@ -153,12 +153,6 @@ Ext.define('Oplaty.components.main.company.Company', {
             fieldLabel: 'E-mail'
         },
         {
-            xtype: 'textfield',
-            name: 'pkd',
-            bind: '{editCompany.pkd}',
-            fieldLabel: 'PKD'
-        },        
-        {
             xtype: 'button',
             text: 'Zapisz',
             margin: '5 0',

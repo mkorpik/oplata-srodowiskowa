@@ -4,5 +4,12 @@ Ext.define('Oplaty.components.main.department.DepartmentViewModel', {
 
     data: {
         editDepartment: null
+    },
+
+    stores: {
+        voivodshipList: Ext.create('Oplaty.store.Voivodship'),
+        poviatList: Ext.create('Oplaty.store.Poviat'),  
+        communeList: Ext.create('Oplaty.store.Commune')
     }
+    
 });

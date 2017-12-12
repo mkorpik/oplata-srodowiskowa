@@ -62,10 +62,9 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
         company = record.data,
         findCompany = store.findRecord('id', company.id);
         if (findCompany) {
-            findCompany.set(company);// = company;            
+            findCompany.set(company);
             findCompany.commit();
         } else {
-            //company.id = store.count() + 1;
             store.add(record);
             record.commit();
         }

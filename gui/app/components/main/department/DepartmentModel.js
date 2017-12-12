@@ -7,14 +7,11 @@ Ext.define('Oplaty.components.main.department.DepartmentModel', {
     fields: [
         {
             name: 'id',
-            type: 'auto', persist: false
+            type: 'auto',
+            persist: false
         },
         {
             name: 'name',
-            type: 'string'
-        },
-        {
-            name: 'voivodship',
             type: 'string'
         },
         {

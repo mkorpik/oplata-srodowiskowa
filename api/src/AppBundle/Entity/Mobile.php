@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Mobile
- *
+ * @ApiResource
  * @ORM\Table(name="mobile", indexes={@ORM\Index(name="IDX_3C7323E0979B1AD6", columns={"company_id"}), @ORM\Index(name="IDX_3C7323E0E78C9C0A", columns={"engine_id"})})
  * @ORM\Entity
  */
@@ -51,24 +52,131 @@ class Mobile
     private $id;
 
     /**
-     * @var \AppBundle\Entity\Company
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="company_id", type="integer", nullable=false)
      */
-    private $company;
+    private $companyId;
 
     /**
-     * @var \AppBundle\Entity\MobileEngine
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MobileEngine")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="engine_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="engine_id", type="integer", nullable=false)
      */
-    private $engine;
+    private $engineId;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegistrationNumber()
+    {
+        return $this->registrationNumber;
+    }
+
+    /**
+     * @param string $registrationNumber
+     */
+    public function setRegistrationNumber($registrationNumber)
+    {
+        $this->registrationNumber = $registrationNumber;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param \DateTime $startDate
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param \DateTime $endDate
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCompanyId()
+    {
+        return $this->companyId;
+    }
+
+    /**
+     * @param int $companyId
+     */
+    public function setCompanyId($companyId)
+    {
+        $this->companyId = $companyId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEngineId()
+    {
+        return $this->engineId;
+    }
+
+    /**
+     * @param int $engineId
+     */
+    public function setEngineId($engineId)
+    {
+        $this->engineId = $engineId;
+    }
+
 
 
 }

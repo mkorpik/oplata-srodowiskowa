@@ -10,7 +10,8 @@ Ext.define('Oplaty.Application', {
 
     requires: [
         'Oplaty.components.main.Main',
-        'Oplaty.components.login.Login'
+        'Oplaty.components.login.Login',
+        'Oplaty.constants.OplatyConstants'
     ],
 
     stores: [        

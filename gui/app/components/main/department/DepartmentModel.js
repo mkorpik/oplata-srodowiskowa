@@ -2,12 +2,12 @@
 Ext.define('Oplaty.components.main.department.DepartmentModel', {
     extend: 'Ext.data.Model',
 
-    idProperty: 'internalId',
+    idProperty: 'id',
 
     fields: [
         {
             name: 'id',
-            type: 'int'
+            type: 'auto', persist: false
         },
         {
             name: 'name',

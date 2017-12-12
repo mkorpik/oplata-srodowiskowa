@@ -3,6 +3,14 @@ Ext.define('Oplaty.components.main.company.CompanyController', {
 
     alias: 'controller.company',
 
+    listen: {
+        controller: {
+            '*': {
+                companyLoaded: 'companyLoaded'
+            }
+        }
+    },  
+
     onSave: function () {
         var record = this.getViewModel().get('editCompany');
         this.fireEvent('saveCompany', record);
@@ -14,19 +22,37 @@ Ext.define('Oplaty.components.main.company.CompanyController', {
     },
 
     onVoivodshipChange: function (combo, record) {
+        var voivodshipId = record.get('id');
+        this.loadPoviatStore(voivodshipId);
+    },
+
+    loadPoviatStore: function(voivodshipId) {
         var vm = this.getViewModel(),
-            store = vm.getStore('poviatList'),
-            voivodshipId = record.get('id');
-        store.proxy.url = 'http://api.oplaty-gui.pl/app_dev.php/adm_poviats?voivodship=' + voivodshipId;
+            store = vm.getStore('poviatList');
+        store.proxy.url = OplatyConstants.API_PATH + 'adm_poviats?voivodship=' + voivodshipId;
         store.reload();    
     },
 
     onPoviatChange: function (combo, record) {
+        var poviatId = record.get('id');
+        this.loadCommuneStore(poviatId);
+    },
+
+    loadCommuneStore: function (poviatId) {
         var vm = this.getViewModel(),
-            store = vm.getStore('communeList'),
-            poviatId = record.get('id');
-        store.proxy.url = 'http://api.oplaty-gui.pl/app_dev.php/adm_communes?poviat=' + poviatId;
+            store = vm.getStore('communeList');        
+        store.proxy.url = OplatyConstants.API_PATH + 'adm_communes?poviat=' + poviatId;
         store.reload();    
-    }
-    
+    },
+
+    companyLoaded: function() {
+        var vm = this.getViewModel(),
+            company = vm.get('editCompany');
+        if (company.data.voivodshipId) {
+           this.loadPoviatStore(company.data.voivodshipId);
+        }
+        if (company.data.poviatId) {
+            this.loadCommuneStore(company.data.poviatId);
+         }         
+    }    
 });

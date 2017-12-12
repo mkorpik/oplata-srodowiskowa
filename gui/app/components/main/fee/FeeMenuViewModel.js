@@ -3,7 +3,6 @@ Ext.define('Oplaty.components.main.fee.FeeMenuViewModel', {
     alias: 'viewmodel.feeMenu',
     
     data: {
-        companyId: null,
-        pariodId: null
+
     }
 });

@@ -11,7 +11,7 @@ Ext.define('Oplaty.store.Commune', {
             'Accept': 'application/json',
             'Content-Type': "application/json"
         },
-        url: 'http://api.oplaty-gui.pl/app_dev.php/adm_communes',
+        url: OplatyConstants.API_PATH + 'adm_communes',
         reader: {
             type: 'json'
         }

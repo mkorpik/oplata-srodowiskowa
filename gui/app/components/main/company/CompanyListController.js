@@ -53,7 +53,8 @@ Ext.define('Oplaty.components.main.company.CompanyListController', {
         var companyForm = Ext.create('Oplaty.components.main.company.Company',{
             //    renderTo: 'companyListId'
             }); 
-        companyForm.getViewModel().set('editCompany', companyRecord);            
+        companyForm.getViewModel().set('editCompany', companyRecord);
+        this.fireEvent('companyLoaded');    
     },
 
     saveCompany: function(record) {

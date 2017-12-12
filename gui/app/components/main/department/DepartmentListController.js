@@ -6,7 +6,8 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
     listen: {
         controller: {
             '*': {
-                saveDepartment: 'saveDepartment'
+                saveDepartment: 'saveDepartment',
+                activeCompanyChange: 'activeCompanyChange'
             }
         }
     },    
@@ -60,11 +61,12 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
         var store = this.getDepartmentStore(),
         department = record.data,
         findDepartment = store.findRecord('id', department.id);
+        store.proxy.url = OplatyConstants.API_PATH + 'departments'
         if (findDepartment) {
-            findDepartment.data = department;
-            record.commit();
+            findDepartment.set(department);
+            findDepartment.commit();
         } else {
-            department.id = store.count() + 1;
+            //department.id = store.count() + 1;
             store.add(record);
             record.commit();
         }
@@ -77,5 +79,14 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
 
     getDepartmentStore: function () {
         return this.getView().lookupViewModel().getStore('departmentList');
+    },
+
+    activeCompanyChange: function () {
+        var store = this.getDepartmentStore();
+        store.reload();
+        companyId = this.getView().lookupViewModel().get('activeCompanyId');
+        store.proxy.url = OplatyConstants.API_PATH + 'departments?companyId=' + companyId;
+        store.reload();
+        this.getDepartmentGrid().reconfigure(store);           
     }
 });

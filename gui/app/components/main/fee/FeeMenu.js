@@ -7,11 +7,12 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
         'Oplaty.components.main.mobile.MobileMenu',
         'Oplaty.components.main.cauldron.CauldronMenu',
         'Oplaty.components.main.rainwater.RainwaterMenu',
-        'Oplaty.components.main.fee.FeeMenuViewModel'
+        'Oplaty.components.main.fee.FeeMenuViewModel',
+        'Oplaty.components.main.fee.FeeMenuController'
     ],
 
 //    viewModel: 'feeMenu',
-
+    controller: 'feeMenu',
     layout: {
         type: 'vbox'
     },
@@ -30,7 +31,10 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     editable: false,
                     bind: {
                         store: '{companyList}',
-                        value: '{companyId}'
+                        value: '{activeCompanyId}'
+                    },
+                    listeners: {
+                        select: 'onCompanyChange'
                     }
                 },
                 {
@@ -42,7 +46,7 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     editable: false,
                     bind: {
                         store: '{periodList}',
-                        value: '{periodId}'
+                        value: '{activePeriodId}'
                     }
                 },
                 {

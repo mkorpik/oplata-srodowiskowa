@@ -11,7 +11,7 @@ Ext.define('Oplaty.store.Period', {
             'Accept': 'application/json',
             'Content-Type': "application/json"
         },
-        url: 'http://api.oplaty-gui.pl/app_dev.php/periods',
+        url: OplatyConstants.API_PATH + 'periods',
         reader: {
             type: 'json'
         }

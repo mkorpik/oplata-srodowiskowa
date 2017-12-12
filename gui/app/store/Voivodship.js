@@ -11,7 +11,7 @@ Ext.define('Oplaty.store.Voivodship', {
             'Accept': 'application/json',
             'Content-Type': "application/json"
         },
-        url: 'http://api.oplaty-gui.pl/app_dev.php/adm_voivodships',
+        url: OplatyConstants.API_PATH + 'adm_voivodships',
         reader: {
             type: 'json'
         }

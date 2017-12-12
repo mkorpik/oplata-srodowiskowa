@@ -11,7 +11,7 @@ Ext.define('Oplaty.store.Poviat', {
             'Accept': 'application/json',
             'Content-Type': "application/json"
         },
-        url: 'http://api.oplaty-gui.pl/app_dev.php/adm_poviats',
+        url: OplatyConstants.API_PATH + 'adm_poviats',
         reader: {
             type: 'json'
         }

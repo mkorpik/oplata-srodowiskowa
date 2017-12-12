@@ -11,11 +11,12 @@ Ext.define('Oplaty.components.main.company.CompanyStore', {
             'Accept': 'application/json',
             'Content-Type': "application/json"
         },
-        url: 'http://api.oplaty-gui.pl/app_dev.php/companies',
+        url: OplatyConstants.API_PATH + 'companies',
         reader: {
             type: 'json'
         }
     },
+    pageSize: 0,
     autoLoad: true,
     autoSync: true
 });

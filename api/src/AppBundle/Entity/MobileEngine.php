@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * MobileEngine
- *
+ * @ApiResource
  * @ORM\Table(name="mobile_engine", indexes={@ORM\Index(name="IDX_978CF187727ACA70", columns={"parent_id"})})
  * @ORM\Entity
  */
@@ -65,14 +66,167 @@ class MobileEngine
     private $id;
 
     /**
-     * @var \AppBundle\Entity\MobileEngine
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MobileEngine")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="parent_id", type="integer", nullable=true)
      */
-    private $parent;
+    private $parentId;
+
+
+    /**
+     * @var fuels
+     * @ORM\ManyToMany(targetEntity="MobileFuel")
+     * @ORM\JoinTable(name="mobile_fuel_to_engine",
+     *      joinColumns={@ORM\JoinColumn(name="engine_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="fuel_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $fuels;
+
+    /**
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLongDesc()
+    {
+        return $this->longDesc;
+    }
+
+    /**
+     * @param string $longDesc
+     */
+    public function setLongDesc($longDesc)
+    {
+        $this->longDesc = $longDesc;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSelectable()
+    {
+        return $this->selectable;
+    }
+
+    /**
+     * @param int $selectable
+     */
+    public function setSelectable($selectable)
+    {
+        $this->selectable = $selectable;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param string $number
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAnnotation()
+    {
+        return $this->annotation;
+    }
+
+    /**
+     * @param string $annotation
+     */
+    public function setAnnotation($annotation)
+    {
+        $this->annotation = $annotation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
+    }
+
+    /**
+     * @param int $parentId
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+    }
+
+    /**
+     * @return fuels
+     */
+    public function getFuels()
+    {
+        return $this->fuels;
+    }
+
+    /**
+     * @param fuels $fuels
+     */
+    public function setFuels($fuels)
+    {
+        $this->fuels = $fuels;
+    }
+
 
 
 }

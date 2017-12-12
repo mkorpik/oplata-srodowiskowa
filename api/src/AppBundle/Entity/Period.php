@@ -63,6 +63,6 @@ class Period
         $this->id = $id;
     }
 
-    
+
 }
 

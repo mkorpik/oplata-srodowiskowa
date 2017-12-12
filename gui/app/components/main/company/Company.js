@@ -35,9 +35,15 @@ Ext.define('Oplaty.components.main.company.Company', {
     items: [
         {
             xtype: 'textarea',
-            name: 'name',
-            bind: '{editCompany.name}',
+            name: 'longname',
+            bind: '{editCompany.longname}',
             fieldLabel: 'Nazwa'
+        },
+        {
+            xtype: 'textfield',
+            name: 'shortname',
+            bind: '{editCompany.shortname}',
+            fieldLabel: 'Nazwa skrócona'
         },
         {
             xtype: 'textfield',
@@ -47,9 +53,39 @@ Ext.define('Oplaty.components.main.company.Company', {
         },
         {
             xtype: 'textfield',
+            name: 'regon',
+            bind: '{editCompany.regon}',
+            fieldLabel: 'REGON'
+        },
+        {
+            xtype: 'textfield',
+            name: 'postalCode',
+            bind: '{editCompany.postalCode}',
+            fieldLabel: 'Kod pocztowy'
+        },
+        {
+            xtype: 'textfield',
             name: 'city',
             bind: '{editCompany.city}',
             fieldLabel: 'Miejscowość'
+        },
+        {
+            xtype: 'textfield',
+            name: 'street',
+            bind: '{editCompany.street}',
+            fieldLabel: 'Ulica'
+        },
+        {
+            xtype: 'textfield',
+            name: 'houseNr',
+            bind: '{editCompany.houseNr}',
+            fieldLabel: 'Nr domu'
+        },
+        {
+            xtype: 'textfield',
+            name: 'flatNr',
+            bind: '{editCompany.flatNr}',
+            fieldLabel: 'Nr lokalu'
         },
         {
             xtype: 'combobox',
@@ -58,7 +94,7 @@ Ext.define('Oplaty.components.main.company.Company', {
             displayField: 'name',
             valueField: 'id',
             forceSelection: true,    
-            editable: true,
+            editable: false,
             bind: {
                 store: '{voivodshipList}',
                 value: '{editCompany.voivodshipId}'
@@ -74,7 +110,7 @@ Ext.define('Oplaty.components.main.company.Company', {
             displayField: 'name',
             valueField: 'id',
             forceSelection: true,
-            editable: true,
+            editable: false,
             bind: {
                 store: '{poviatList}',
                 value: '{editCompany.poviatId}',
@@ -91,12 +127,36 @@ Ext.define('Oplaty.components.main.company.Company', {
             displayField: 'name',
             valueField: 'id',
             forceSelection: true,
-            editable: true,
+            editable: false,
             bind: {
                 store: '{communeList}',
                 value: '{editCompany.communeId}',
                 disabled: '{!editCompany.poviatId}'
             }
+        },        
+        {
+            xtype: 'textfield',
+            name: 'phone',
+            bind: '{editCompany.phone}',
+            fieldLabel: 'Telefon'
+        },
+        {
+            xtype: 'textfield',
+            name: 'fax',
+            bind: '{editCompany.fax}',
+            fieldLabel: 'Faks'
+        },
+        {
+            xtype: 'textfield',
+            name: 'email',
+            bind: '{editCompany.email}',
+            fieldLabel: 'E-mail'
+        },
+        {
+            xtype: 'textfield',
+            name: 'pkd',
+            bind: '{editCompany.pkd}',
+            fieldLabel: 'PKD'
         },        
         {
             xtype: 'button',

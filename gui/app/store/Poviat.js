@@ -16,6 +16,7 @@ Ext.define('Oplaty.store.Poviat', {
             type: 'json'
         }
     },
+    pageSize: 0,
     autoLoad: false,
     autoSync: false
 });

@@ -3,6 +3,7 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileViewModel', {
     alias: 'viewmodel.mobile',
 
     data: {
-        editMobile: null
+        editMobile: null,
+        selectedEngine: null
     }
 });

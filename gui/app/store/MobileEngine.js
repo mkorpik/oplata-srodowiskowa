@@ -1,9 +1,9 @@
-Ext.define('Oplaty.components.main.mobile.mobiles.MobileStore', {
+Ext.define('Oplaty.store.MobileEngine', {
     extend: 'Ext.data.Store',
 
-    alias: 'store.mobile',
+    alias: 'store.mobileEngine',
 
-    model: 'Oplaty.components.main.mobile.mobiles.MobileModel',
+    model: 'Oplaty.model.EngineModel',
 
     proxy: {
         type: 'rest',
@@ -11,11 +11,12 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileStore', {
             'Accept': 'application/json',
             'Content-Type': "application/json"
         },
-        url: OplatyConstants.API_PATH + 'mobiles',
+        url: OplatyConstants.API_PATH + 'mobile_engines',
         reader: {
             type: 'json'
         }
     },
-    autoLoad: false,
-    autoSync: true
+    pageSize: 0,
+    autoLoad: true,
+    autoSync: false
 });

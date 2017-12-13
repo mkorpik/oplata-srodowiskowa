@@ -14,25 +14,24 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
 
     onAddDepartment: function () {
         var me = this,
-            newDepartment = Ext.create('Oplaty.components.main.department.DepartmentModel', {
-                
+            newDepartment = Ext.create('Oplaty.components.main.department.DepartmentModel', {                
             });
         newDepartment.set('companyId', this.getActiveCompanyId());    
         this.showEditForm(newDepartment);
     },
 
     onEditDepartment: function () {
-        var selectedCompanies = this.getDepartmentGrid().getSelection();
-        if (selectedCompanies.length === 1) {
-            this.showEditForm(selectedCompanies[0].copy());
+        var selectedDepartments = this.getDepartmentGrid().getSelection();
+        if (selectedDepartments.length === 1) {
+            this.showEditForm(selectedDepartments[0].copy());
         } else {
             Ext.Msg.alert('Info', 'Należy zaznaczyć wiersz.');
         }
     },
 
     onDeleteDepartment: function () {
-        var selectedCompanies = this.getDepartmentGrid().getSelection();
-        if (selectedCompanies.length === 1) {
+        var selectedDepartments = this.getDepartmentGrid().getSelection();
+        if (selectedDepartments.length === 1) {
             Ext.Msg.confirm('Uwaga', 'Czy na pewno usunąć firmę?', 'deleteDepartment', this);  
         } else {
             Ext.Msg.alert('Info', 'Należy zaznaczyć wiersz.');
@@ -57,7 +56,7 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
             //    renderTo: 'departmentListId'
             }); 
         departmentForm.getViewModel().set('editDepartment', departmentRecord);
-        this.fireEvent('companyLoaded');            
+        this.fireEvent('departmentLoaded');            
     },
 
     saveDepartment: function(record) {
@@ -69,7 +68,6 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
             findDepartment.set(department);
             findDepartment.commit();
         } else {
-            //department.id = store.count() + 1;
             store.add(record);
             record.commit();
         }

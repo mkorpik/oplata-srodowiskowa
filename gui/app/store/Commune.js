@@ -16,6 +16,7 @@ Ext.define('Oplaty.store.Commune', {
             type: 'json'
         }
     },
+    pageSize: 0,
     autoLoad: false,
     autoSync: false
 });

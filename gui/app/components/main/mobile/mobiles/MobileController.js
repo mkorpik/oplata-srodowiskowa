@@ -3,6 +3,14 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileController', {
 
     alias: 'controller.mobile',
 
+    listen: {
+        controller: {
+            '*': {
+                mobileLoaded: 'mobileLoaded'
+            }
+        }
+    },     
+
     onSave: function () {
         var record = this.getViewModel().get('editMobile');
         this.fireEvent('saveMobile', record);
@@ -11,6 +19,19 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileController', {
 
     onCancel: function () {
         this.getView().close();
-    }
+    },
+
+    onEngineChoise: function () {
+        var engineForm = Ext.create('Oplaty.components.main.mobile.mobiles.engine.EngineTree',{            
+            });         
+    },
+
+    mobileLoaded: function () {
+        var store = this.getEngineStore();
+    },
+
+    getEngineStore: function () {
+        return this.getView().lookupViewModel().getStore('engineList');
+    },
 
 });

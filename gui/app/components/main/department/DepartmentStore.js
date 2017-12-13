@@ -11,7 +11,7 @@ Ext.define('Oplaty.components.main.department.DepartmentStore', {
             'Accept': 'application/json',
             'Content-Type': "application/json"
         },
-        url: 'http://api.oplaty-gui.pl/departments',
+        url: OplatyConstants.API_PATH + 'departments',
         reader: {
             type: 'json'
         }

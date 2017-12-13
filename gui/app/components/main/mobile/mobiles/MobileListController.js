@@ -6,7 +6,8 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
     listen: {
         controller: {
             '*': {
-                saveMobile: 'saveMobile'
+                saveMobile: 'saveMobile',
+                activeCompanyChange: 'activeCompanyChange'
             }
         }
     },    
@@ -15,6 +16,8 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
         var me = this,
             newMobile = Ext.create('Oplaty.components.main.mobile.mobiles.MobileModel', {            
             });
+        newMobile.set('companyId', this.getActiveCompanyId());    
+        newMobile.set('engineId', 91015);                        
         this.showEditForm(newMobile);
     },
 
@@ -37,7 +40,7 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
     },
 
     deleteMobile: function (btn) {
-        var store = this.getViewModel().getStore('mobileList'),
+        var store = this.getMobileStore(),
         selectedMobiles = this.getMobileGrid().getSelection();
         if (btn === 'yes') {
             store.remove(selectedMobiles[0]);
@@ -54,17 +57,18 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
             //    renderTo: 'mobileListId'
             }); 
         mobileForm.getViewModel().set('editMobile', mobileRecord);            
+        this.fireEvent('mobileLoaded');                    
     },
 
     saveMobile: function(record) {
-        var store = this.getViewModel().getStore('mobileList'),
+        var store = this.getMobileStore(),
         mobile = record.data,
         findMobile = store.findRecord('id', mobile.id);
+        store.proxy.url = OplatyConstants.API_PATH + 'mobiles'        
         if (findMobile) {
-            findMobile.data = mobile;
+            findMobile.set(mobile);
             record.commit();
         } else {
-            mobile.id = store.count() + 1;
             store.add(record);
             record.commit();
         }
@@ -73,6 +77,23 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
 
     getMobileGrid: function() {
         return this.getView().down('#idMobileGrid');
-    }
+    },
+
+    getMobileStore: function () {
+        return this.getView().lookupViewModel().getStore('mobileList');
+    },    
+
+    activeCompanyChange: function () {
+        var store = this.getMobileStore();
+        store.reload();
+        companyId = this.getActiveCompanyId();
+        store.proxy.url = OplatyConstants.API_PATH + 'mobiles?companyId=' + companyId;
+        store.reload();
+        this.getMobileGrid().reconfigure(store);           
+    },
+    
+    getActiveCompanyId: function () {
+        return this.getView().lookupViewModel().get('activeCompanyId');
+    }    
 
 });

@@ -2,12 +2,13 @@
 Ext.define('Oplaty.components.main.mobile.mobiles.MobileModel', {
     extend: 'Ext.data.Model',
 
-    idProperty: 'internalId',
+    idProperty: 'id',
 
     fields: [
         {
             name: 'id',
-            type: 'int'
+            type: 'auto',
+            persist: false
         },
         {
             name: 'name',
@@ -16,18 +17,6 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileModel', {
         {
             name: 'registrationNumber',
             type: 'string'
-        },
-        {
-            name: 'engineId',
-            type: 'string'
-        },
-        {
-            name: 'startDate',
-            type: 'date'
-        },
-        {
-            name: 'endDate',
-            type: 'date'
         }
     ]
 });

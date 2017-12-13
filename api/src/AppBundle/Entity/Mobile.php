@@ -7,7 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Mobile
- * @ApiResource
+ * @ApiResource(attributes={"filters"={"mobile.search_filter"}})
  * @ORM\Table(name="mobile", indexes={@ORM\Index(name="IDX_3C7323E0979B1AD6", columns={"company_id"}), @ORM\Index(name="IDX_3C7323E0E78C9C0A", columns={"engine_id"})})
  * @ORM\Entity
  */
@@ -64,6 +64,16 @@ class Mobile
      * @ORM\Column(name="engine_id", type="integer", nullable=false)
      */
     private $engineId;
+
+    /**
+     * @var fuels
+     * @ORM\ManyToMany(targetEntity="MobileFuel")
+     * @ORM\JoinTable(name="mobile_fuel_to_mobile",
+     *      joinColumns={@ORM\JoinColumn(name="mobile_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="fuel_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $fuels;
 
     /**
      * @return string
@@ -177,7 +187,21 @@ class Mobile
         $this->engineId = $engineId;
     }
 
+    /**
+     * @return fuels
+     */
+    public function getFuels()
+    {
+        return $this->fuels;
+    }
 
+    /**
+     * @param fuels $fuels
+     */
+    public function setFuels($fuels)
+    {
+        $this->fuels = $fuels;
+    }
 
 }
 

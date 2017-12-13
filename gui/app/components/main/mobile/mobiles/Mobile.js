@@ -33,11 +33,29 @@ Ext.define('Oplaty.components.main.mobile.mobiles.Mobile', {
     },
     items: [
         {
-            xtype: 'textarea',
+            xtype: 'textfield',
             name: 'name',
             bind: '{editMobile.name}',
             fieldLabel: 'Nazwa'
         },
+        {
+            xtype: 'textfield',
+            name: 'registrationNumber',
+            bind: '{editMobile.registrationNumber}',
+            fieldLabel: 'Nr rejestracyjny'
+        },
+        {
+            xtype: 'displayfield',
+            name: 'engineLabel',
+            fieldLabel: 'Rodzaj silnika',
+            bind: '{selectedEngine.description}'            
+        },
+        {
+            xtype: 'button',
+            text: 'Wybierz',
+            margin: '5 0',
+            handler: 'onEngineChoise'
+        },             
         {
             xtype: 'button',
             text: 'Zapisz',

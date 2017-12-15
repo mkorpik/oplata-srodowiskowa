@@ -23,5 +23,10 @@ services:
 
     mobile.search_filter:
         parent:  'api_platform.doctrine.orm.search_filter'
-        arguments: [ { companyId: 'exact' } ]
+        arguments: [ { company: 'exact' } ]
+        tags: [ 'api_platform.filter' ] 
+
+    mobileFuelUsed.search_filter:
+        parent:  'api_platform.doctrine.orm.search_filter'
+        arguments: [ { mobile.company: 'exact', periodId: 'exact' } ]
         tags: [ 'api_platform.filter' ] 

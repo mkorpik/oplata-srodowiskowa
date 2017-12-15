@@ -29,6 +29,7 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     valueField: 'id',
                     forceSelection: true,    
                     editable: false,
+                    queryMode: 'local',
                     bind: {
                         store: '{companyList}',
                         value: '{activeCompanyId}'
@@ -42,12 +43,16 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     fieldLabel: 'Okres rozliczeniowy',
                     displayField: 'periodName',
                     valueField: 'id',
+                    queryMode: 'local',
                     forceSelection: true,
                     editable: false,
                     bind: {
                         store: '{periodList}',
                         value: '{activePeriodId}'
-                    }
+                    },
+                    listeners: {
+                        select: 'onPeriodChange'
+                    }                    
                 },
                 {
                     

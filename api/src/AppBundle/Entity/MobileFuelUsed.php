@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * MobileFuelUsed
- *
+ * @ApiResource(attributes={"filters"={"mobileFuelUsed.search_filter"}})
  * @ORM\Table(name="mobile_fuel_used", indexes={@ORM\Index(name="IDX_E5267056776D5B82", columns={"mobile_fuel_id"}), @ORM\Index(name="IDX_E5267056B806424B", columns={"mobile_id"}), @ORM\Index(name="IDX_E5267056EC8B7ADE", columns={"period_id"})})
  * @ORM\Entity
  */
@@ -51,14 +52,11 @@ class MobileFuelUsed
     private $id;
 
     /**
-     * @var \AppBundle\Entity\MobileFuel
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MobileFuel")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="mobile_fuel_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="mobile_fuel_id", type="integer", nullable=true)
      */
-    private $mobileFuel;
+    private $mobileFuelId;
 
     /**
      * @var \AppBundle\Entity\Mobile
@@ -71,14 +69,139 @@ class MobileFuelUsed
     private $mobile;
 
     /**
-     * @var \AppBundle\Entity\Period
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Period")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="period_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="period_id", type="integer", nullable=false)
      */
-    private $period;
+    private $periodId;
+
+    /**
+     * @return int
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
+    }
+
+    /**
+     * @param int $deleted
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return float
+     */
+    public function getExpend()
+    {
+        return $this->expend;
+    }
+
+    /**
+     * @param float $expend
+     */
+    public function setExpend($expend)
+    {
+        $this->expend = $expend;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMobileFuelId()
+    {
+        return $this->mobileFuelId;
+    }
+
+    /**
+     * @param int $mobileFuelId
+     */
+    public function setMobileFuelId($mobileFuelId)
+    {
+        $this->mobileFuelId = $mobileFuelId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPeriodId()
+    {
+        return $this->periodId;
+    }
+
+    /**
+     * @param int $periodId
+     */
+    public function setPeriodId($periodId)
+    {
+        $this->periodId = $periodId;
+    }
+
+    /**
+     * @return Mobile
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * @param Mobile $mobile
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+    }
 
 
 }

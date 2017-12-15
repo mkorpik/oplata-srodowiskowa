@@ -3,5 +3,12 @@ Ext.define('Oplaty.constants.OplatyConstants', {
 
     singleton: true,
 
-    API_PATH: 'http://api.oplaty-gui.pl/'
+    API_PATH: 'http://api.oplaty-gui.pl/',
+
+    Rest: {
+        COMMUNE: '/adm_communes/',
+        COMPANY: '/companies/',
+        DEPARTMENT: '/departments/',
+        MOBILE: '/mobiles/'        
+    }
 });

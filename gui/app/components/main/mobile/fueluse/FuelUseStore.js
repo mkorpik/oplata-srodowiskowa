@@ -5,15 +5,17 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseStore', {
 
     model: 'Oplaty.components.main.mobile.fueluse.FuelUseModel',
 
-    data: [
-        { id: 1, name: 'Zużycie m1', registrationNumber: "6541233434", startDate: "2016-01-01", endDate: '2016-01-01' },
-        { id: 2, name: 'Zużycie m2', registrationNumber: "5433278965", startDate: "2016-01-01", endDate: '2016-01-01' },
-        { id: 3, name: 'Zużycie m3', registrationNumber: "4435657657", startDate: "2016-01-01", endDate: '2016-01-01' },
-        { id: 4, name: 'Zużycie m4', registrationNumber: "7676843455", startDate: "2016-01-01", endDate: '2016-01-01' }
-    ],
-
     proxy: {
-        type: 'memory',
-        reader: 'json'
-    }
+        type: 'rest',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': "application/json"
+        },
+        url: OplatyConstants.API_PATH + 'mobile_fuel_useds',
+        reader: {
+            type: 'json'
+        }
+    },
+    autoLoad: false,
+    autoSync: true
 });

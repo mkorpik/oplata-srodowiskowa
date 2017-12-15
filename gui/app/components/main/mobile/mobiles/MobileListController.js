@@ -12,12 +12,23 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
         }
     },    
 
+    init: function () {
+        var store = this.getMobileStore();
+        store.on('load', this.onStoreLoad, this);
+    },
+
+    onStoreLoad: function () {
+        this.getView().lookupViewModel(true).set('mobilesLoaded', true);
+        this.fireEvent('mobilesLoaded'); 
+    }, 
+
     onAddMobile: function () {
         var me = this,
             newMobile = Ext.create('Oplaty.components.main.mobile.mobiles.MobileModel', {            
             });
-        newMobile.set('companyId', this.getActiveCompanyId());    
-        newMobile.set('engineId', 91015);                        
+        newMobile.set('company', OplatyConstants.Rest.COMPANY + this.getActiveCompanyId());    
+        //newMobile.set('engineId', 91015);   
+        newMobile.set('fuels', []);                     
         this.showEditForm(newMobile);
     },
 
@@ -85,9 +96,10 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
 
     activeCompanyChange: function () {
         var store = this.getMobileStore();
+        this.getView().lookupViewModel(true).set('mobilesLoaded', false);
         store.reload();
         companyId = this.getActiveCompanyId();
-        store.proxy.url = OplatyConstants.API_PATH + 'mobiles?companyId=' + companyId;
+        store.proxy.url = OplatyConstants.API_PATH + 'mobiles?company=' + companyId;
         store.reload();
         this.getMobileGrid().reconfigure(store);           
     },

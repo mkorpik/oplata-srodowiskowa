@@ -52,11 +52,14 @@ class Mobile
     private $id;
 
     /**
-     * @var integer
+     * @var \AppBundle\Entity\Company
      *
-     * @ORM\Column(name="company_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * })
      */
-    private $companyId;
+    private $company;
 
     /**
      * @var integer
@@ -156,19 +159,19 @@ class Mobile
     }
 
     /**
-     * @return int
+     * @return Company
      */
-    public function getCompanyId()
+    public function getCompany()
     {
-        return $this->companyId;
+        return $this->company;
     }
 
     /**
-     * @param int $companyId
+     * @param Company $company
      */
-    public function setCompanyId($companyId)
+    public function setCompany($company)
     {
-        $this->companyId = $companyId;
+        $this->company = $company;
     }
 
     /**

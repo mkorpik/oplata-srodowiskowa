@@ -59,11 +59,14 @@ class MobileFuelUsed
     private $mobileFuelId;
 
     /**
-     * @var integer
+     * @var \AppBundle\Entity\Mobile
      *
-     * @ORM\Column(name="mobile_id", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Mobile")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="mobile_id", referencedColumnName="id")
+     * })
      */
-    private $mobileId;
+    private $mobile;
 
     /**
      * @var integer
@@ -171,22 +174,6 @@ class MobileFuelUsed
     /**
      * @return int
      */
-    public function getMobileId()
-    {
-        return $this->mobileId;
-    }
-
-    /**
-     * @param int $mobileId
-     */
-    public function setMobileId($mobileId)
-    {
-        $this->mobileId = $mobileId;
-    }
-
-    /**
-     * @return int
-     */
     public function getPeriodId()
     {
         return $this->periodId;
@@ -199,6 +186,23 @@ class MobileFuelUsed
     {
         $this->periodId = $periodId;
     }
+
+    /**
+     * @return Mobile
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * @param Mobile $mobile
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+    }
+
 
 }
 

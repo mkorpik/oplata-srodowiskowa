@@ -18,7 +18,7 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
     },
 
     onStoreLoad: function () {
-        this.getView().lookupViewModel().set('mobilesLoaded', true);
+        this.getView().lookupViewModel(true).set('mobilesLoaded', true);
         this.fireEvent('mobilesLoaded'); 
     }, 
 
@@ -96,7 +96,7 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
 
     activeCompanyChange: function () {
         var store = this.getMobileStore();
-        this.getView().lookupViewModel().set('mobilesLoaded', false);
+        this.getView().lookupViewModel(true).set('mobilesLoaded', false);
         store.reload();
         companyId = this.getActiveCompanyId();
         store.proxy.url = OplatyConstants.API_PATH + 'mobiles?company=' + companyId;

@@ -22,7 +22,8 @@ Ext.define('Oplaty.components.main.company.CompanyList', {
         listeners: {
             rowdblclick: 'onRowDblClick'
         },
-        width: 600,        
+        width: 600,  
+        heigh: 400,      
         align: 'right'
     },{
         xtype: 'panel',

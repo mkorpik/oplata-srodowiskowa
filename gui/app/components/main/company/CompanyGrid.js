@@ -8,10 +8,7 @@ Ext.define('Oplaty.components.main.company.CompanyGrid', {
     bind:{
         store: '{companyList}'
     },
-    // store: {
-    //     type: 'company'
-    // },
-
+    plugins: 'gridfilters',
     columns: [
         {
             text: 'Nazwa',
@@ -26,7 +23,7 @@ Ext.define('Oplaty.components.main.company.CompanyGrid', {
             dataIndex: 'street',
             flex: 3
         },{ 
-            text: 'Mejscowość', 
+            text: 'Miejscowość', 
             dataIndex: 'city',
             flex: 3
         }

@@ -16,6 +16,7 @@ Ext.define('Oplaty.store.Voivodship', {
             type: 'json'
         }
     },
+    pageSize: 0,
     autoLoad: true,
     autoSync: false
 });

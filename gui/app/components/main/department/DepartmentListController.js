@@ -14,10 +14,16 @@ Ext.define('Oplaty.components.main.department.DepartmentListController', {
 
     onAddDepartment: function () {
         var me = this,
+            newDepartment = null,
+            companyId = this.getActiveCompanyId();
+        if (companyId) {
             newDepartment = Ext.create('Oplaty.components.main.department.DepartmentModel', {                
             });
-        newDepartment.set('companyId', this.getActiveCompanyId());    
-        this.showEditForm(newDepartment);
+            newDepartment.set('companyId', this.getActiveCompanyId());    
+            this.showEditForm(newDepartment);
+        } else {
+            Ext.Msg.alert('Info', 'Należy wybrać firmę.');
+        }
     },
 
     onEditDepartment: function () {

@@ -22,11 +22,12 @@ Ext.define('Oplaty.components.main.department.DepartmentList', {
         listeners: {
             rowdblclick: 'onRowDblClick'
         },
-        width: 600,        
+        width: 600,  
+        height: 400,      
         align: 'right'
     },{
         xtype: 'panel',
-        width: 110,        
+        width: 111,        
         layout: {
             type: 'table',
             columns: 1,

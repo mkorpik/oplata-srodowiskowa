@@ -65,9 +65,12 @@
      *      ]
      */
     "requires": [
-        "font-awesome"
+        "font-awesome",
+        "ext-locale"
     ],
 
+    "locale": "pl",
+    
     /**
      * Fashion build configuration properties.
      */

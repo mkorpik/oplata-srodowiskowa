@@ -22,24 +22,16 @@ Ext.define('Oplaty.components.main.company.Company', {
     scrollable: true,
     width: 700,
     height: 500,
-
     layout: 'column',
-
     center: true,
     autoShow: true,
-    title: {
-        bind: '{editCompany.shortname}'
-    },
+    title: 'Dane firmy',
     bodyPadding: 20,
     defaults: {
         layout: 'form',    
         xtype: 'container',            
         width: '50%'
-        //labelAlign: 'top'
     },
-    fieldDefaults: {
-        labelAlign: 'top'  
-    },    
     items: [
         {   
             items: [
@@ -47,8 +39,7 @@ Ext.define('Oplaty.components.main.company.Company', {
                     xtype: 'textarea',
                     name: 'longname',
                     bind: '{editCompany.longname}',
-                    fieldLabel: 'Nazwa',
-                    height: 55
+                    fieldLabel: 'Nazwa'
                 },
                 {
                     xtype: 'textfield',
@@ -177,14 +168,12 @@ Ext.define('Oplaty.components.main.company.Company', {
     buttons: [
         {
             xtype: 'button',
-            text: 'Zapisz',
-            //margin: '5 0',
+            text: 'Zapisz',            
             handler: 'onSave'
         },
         {
             xtype: 'button',
             text: 'Zamknij',
-            //margin: '5 0',
             handler: 'onCancel'
         }
 

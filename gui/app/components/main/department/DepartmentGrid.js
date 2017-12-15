@@ -8,23 +8,30 @@ Ext.define('Oplaty.components.main.department.DepartmentGrid', {
     bind:{
         store: '{departmentList}'
     },
-    // store: {
-    //     type: 'department'
-    // },
-
+    plugins: 'gridfilters',
     columns: [
         {
             text: 'Nazwa',
             dataIndex: 'name',
-            flex: 3
-        },{
-            text: 'Województwo',
-            dataIndex: 'voivodship',
-            flex: 3
+            flex: 3,
+            filter: {
+                type: 'string'
+            }                        
         },{ 
-            text: 'Mejscowość', 
+            text: 'Miejscowość', 
             dataIndex: 'city',
-            flex: 3
-        }
+            flex: 3,
+            filter: {
+                type: 'string'
+            }                        
+        },
+        { 
+            text: 'Ulica',
+            dataIndex: 'street',
+            flex: 3,
+            filter: {
+                type: 'string'
+            }                        
+        }        
     ]
 });

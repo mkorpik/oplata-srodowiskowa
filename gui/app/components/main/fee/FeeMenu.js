@@ -20,7 +20,8 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
     items: [
         {
             xtype: 'panel',
-            layout: 'form',
+            width: 600,
+            layout: 'hbox',
             items:[
                 {
                     xtype: 'combobox',
@@ -30,13 +31,15 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     forceSelection: true,    
                     editable: false,
                     queryMode: 'local',
+                    labelAlign: 'top',
                     bind: {
                         store: '{companyList}',
                         value: '{activeCompanyId}'
                     },
                     listeners: {
                         select: 'onCompanyChange'
-                    }
+                    },
+                    margin: '0 10 20 90'
                 },
                 {
                     xtype: 'combobox',
@@ -46,13 +49,15 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     queryMode: 'local',
                     forceSelection: true,
                     editable: false,
+                    labelAlign: 'top',
                     bind: {
                         store: '{periodList}',
                         value: '{activePeriodId}'
                     },
                     listeners: {
                         select: 'onPeriodChange'
-                    }                    
+                    },
+                    margin: '0 10 20 10'               
                 },
                 {
                     
@@ -108,6 +113,7 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                 }]
             }, {
                 title: 'Wody opadowe',
+                hidden: true,
                 iconCls: ' fa-cloud',
                 items: [{
                     xtype: 'rainwaterMenu'
@@ -115,6 +121,7 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
             }, {
                 title: 'Sprawozdania',
                 iconCls: 'fa-file-text',
+                width: 721,
                 bind: {
                     html: '{loremIpsum}'
                 }

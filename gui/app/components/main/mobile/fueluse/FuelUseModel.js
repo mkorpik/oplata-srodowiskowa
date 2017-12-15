@@ -2,32 +2,17 @@
 Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseModel', {
     extend: 'Ext.data.Model',
 
-    idProperty: 'internalId',
+    idProperty: 'id',
 
     fields: [
         {
             name: 'id',
-            type: 'int'
+            type: 'auto',
+            persist: false
         },
         {
-            name: 'name',
-            type: 'string'
-        },
-        {
-            name: 'registrationNumber',
-            type: 'string'
-        },
-        {
-            name: 'engineId',
-            type: 'string'
-        },
-        {
-            name: 'startDate',
-            type: 'date'
-        },
-        {
-            name: 'endDate',
-            type: 'date'
+            name: 'expend',
+            type: 'number'
         }
     ]
 });

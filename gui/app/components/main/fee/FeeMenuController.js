@@ -5,6 +5,10 @@ Ext.define('Oplaty.components.main.fee.FeeMenuController', {
 
     onCompanyChange: function (combo, record) {
         this.fireEvent('activeCompanyChange');        
+    },
+
+    onPeriodChange: function (combo, record) {
+        this.fireEvent('activePeriodChange');          
     }
 
 });

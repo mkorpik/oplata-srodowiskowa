@@ -6,10 +6,12 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
     listen: {
         controller: {
             '*': {
-                saveMobileFuelUse: 'saveFuelUse'
+                saveMobileFuelUse: 'saveFuelUse',
+                mobilesLoaded: 'mobilesLoaded',
+                activePeriodChange: 'activePeriodChange'
             }
         }
-    },    
+    }, 
 
     onAddFuelUse: function () {
         var me = this,
@@ -73,6 +75,44 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
 
     getFuelUseGrid: function() {
         return this.getView().down('#idMobileFuelUseGrid');
+    },
+
+    mobilesLoaded: function () {
+        this.reloadFuelUsed();
+    }, 
+
+    getFuelUsedStore: function () {
+        return this.getViewModel().getStore('mobileFuelUseList');
+    },
+
+    getActiveCompanyId: function () {
+        return this.getView().lookupViewModel().get('activeCompanyId');
+    },
+
+    getActivePeriodId: function () {
+        return this.getView().lookupViewModel().get('activePeriodId');
+    },    
+
+    getMobilesLoaded: function () {
+        return this.getView().lookupViewModel().get('mobilesLoaded');
+    },      
+    
+    activePeriodChange: function () {
+        this.reloadFuelUsed();
+    },
+
+    reloadFuelUsed: function () {
+        var store = this.getFuelUsedStore(),
+            companyId = this.getActiveCompanyId(),
+            periodId = this.getActivePeriodId(),
+            mobilesLoaded = this.getMobilesLoaded();
+//        store.reload();
+        
+        if (mobilesLoaded && companyId && periodId) {
+            store.proxy.url = OplatyConstants.API_PATH + 'mobile_fuel_useds?mobile.company=' + companyId + '&periodId=' + periodId;
+            store.reload();
+            this.getFuelUseGrid().reconfigure(store);           
+        }
     }
 
 });

@@ -49,7 +49,10 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                     bind: {
                         store: '{periodList}',
                         value: '{activePeriodId}'
-                    }
+                    },
+                    listeners: {
+                        select: 'onPeriodChange'
+                    }                    
                 },
                 {
                     

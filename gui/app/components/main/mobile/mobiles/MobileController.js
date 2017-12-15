@@ -49,9 +49,11 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileController', {
             engine = engineStore.findRecord('id', mobileRecord.get('engineId')),
             fuels = [];
         this.getViewModel().set('selectedEngine', engine);
-        engine.get('fuels').forEach(function(entry){
-            fuels.push(Number(entry.replace('/mobile_fuels/', '')));
-        });
+        if (engine) {
+            engine.get('fuels').forEach(function(entry){
+                fuels.push(Number(entry.replace('/mobile_fuels/', '')));
+            });
+        }
         this.getViewModel().set('avaliableFuels', fuels);
         this.filterFuelStore();
     },

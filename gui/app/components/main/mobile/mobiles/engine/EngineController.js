@@ -6,7 +6,7 @@ Ext.define('Oplaty.components.main.mobile.mobiles.engine.EngineController', {
     onSave: function () {
         var record = this.getEngineTree().getSelection();
         
-        //this.fireEvent('saveMobile', record);
+        this.fireEvent('engineSelected', record[0]);
         this.getView().close();
     },
 

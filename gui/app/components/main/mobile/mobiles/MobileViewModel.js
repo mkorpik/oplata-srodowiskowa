@@ -4,6 +4,8 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileViewModel', {
 
     data: {
         editMobile: null,
-        selectedEngine: null
+        selectedEngine: null,
+        avaliableFuels: [],
+        selectedFuels: []
     }
 });

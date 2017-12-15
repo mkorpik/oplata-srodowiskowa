@@ -48,13 +48,22 @@ Ext.define('Oplaty.components.main.mobile.mobiles.Mobile', {
             xtype: 'displayfield',
             name: 'engineLabel',
             fieldLabel: 'Rodzaj silnika',
-            bind: '{selectedEngine.description}'            
+            bind: '{selectedEngine.description}'
         },
         {
             xtype: 'button',
             text: 'Wybierz',
             margin: '5 0',
             handler: 'onEngineChoise'
+        },             
+        {
+            xtype: 'tagfield',
+            fieldLabel: 'Rodzaj paliwa',                        
+            displayField: 'description',
+            valueField: 'id',
+            store: 'MobileFuel',
+            queryMode: 'local',
+            bind: '{selectedFuels}'       
         },             
         {
             xtype: 'button',

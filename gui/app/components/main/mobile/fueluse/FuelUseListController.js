@@ -15,9 +15,17 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
 
     onAddFuelUse: function () {
         var me = this,
+            newFuelUse = null,
+            companyId = this.getActiveCompanyId(),
+            periodId = this.getActivePeriodId();
+        if (companyId && periodId) {
             newFuelUse = Ext.create('Oplaty.components.main.mobile.fueluse.FuelUseModel', {            
             });
-        this.showEditForm(newFuelUse);
+            newFuelUse.set('periodId', periodId);
+            this.showEditForm(newFuelUse);
+        } else {
+            Ext.Msg.alert('Info', 'Należy wybrać firmę i rok.');              
+        }
     },
 
     onEditFuelUse: function () {
@@ -54,19 +62,20 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
     showEditForm: function (mobileFuelUseRecord) {
         var mobileFuelUseForm = Ext.create('Oplaty.components.main.mobile.fueluse.FuelUse',{
             //    renderTo: 'fuelUseListId'
-            }); 
-            mobileFuelUseForm.getViewModel().set('editMobileFuelUse', mobileFuelUseRecord);            
+        }); 
+        mobileFuelUseForm.getViewModel().set('editMobileFuelUse', mobileFuelUseRecord);
+        this.fireEvent('fuelUseLoaded');
     },
 
     saveFuelUse: function(record) {
-        var store = this.getViewModel().getStore('mobileFuelUseList'),
+        var store = this.getFuelUsedStore(),
         mobileFuelUse = record.data,
         findFuelUse = store.findRecord('id', mobileFuelUse.id);
+        store.proxy.url = OplatyConstants.API_PATH + 'mobile_fuel_useds';        
         if (findFuelUse) {
-            findFuelUse.data = mobileFuelUse;
+            findFuelUse.set(mobileFuelUse);
             record.commit();
         } else {
-            mobileFuelUse.id = store.count() + 1;
             store.add(record);
             record.commit();
         }
@@ -113,6 +122,28 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
             store.reload();
             this.getFuelUseGrid().reconfigure(store);           
         }
+    },
+
+    renderMobile: function (value, metaData) {
+        var mobileId = Number(value.replace('/mobiles/', '')),
+            mobile = this.getMobileStore().findRecord('id', mobileId);
+        return mobile.get('name');
+
+    },
+
+    renderFuel: function (value, metaData) {
+        var fuelId = Number(value),
+            fuel = this.getFuelStore().findRecord('id', fuelId);
+        return fuel.get('description');
+
+    },    
+
+    getFuelStore: function () {        
+        return Ext.getStore('MobileFuel');        
+    },
+    
+    getMobileStore: function () {
+        return this.getView().lookupViewModel().getStore('mobileList');
     }
 
 });

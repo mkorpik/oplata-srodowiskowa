@@ -80,7 +80,7 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
         var store = this.getMobileStore(),
         mobile = record.data,
         findMobile = store.findRecord('id', mobile.id);
-        store.proxy.url = OplatyConstants.API_PATH + 'mobiles'        
+        store.proxy.url = OplatyConstants.API_PATH + 'mobiles';        
         if (findMobile) {
             findMobile.set(mobile);
             record.commit();

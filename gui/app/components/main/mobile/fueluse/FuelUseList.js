@@ -2,7 +2,7 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseList', {
     extend: 'Ext.panel.Panel',
     xtype: 'mobileFuelUseList',
 
-    viewModel: 'mobileFuelUseList',
+    //viewModel: 'mobileFuelUseList',
     controller: 'mobileFuelUseList',
 
     require: [
@@ -21,7 +21,8 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseList', {
         listeners: {
             rowdblclick: 'onRowDblClick'
         },
-        width: 600,        
+        width: 600,      
+        height: 300,    
         align: 'right'
     },{
         xtype: 'panel',

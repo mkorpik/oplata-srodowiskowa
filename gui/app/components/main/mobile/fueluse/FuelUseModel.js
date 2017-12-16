@@ -13,6 +13,14 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseModel', {
         {
             name: 'expend',
             type: 'number'
+        },        
+        {
+            name: 'deleted',
+            type: 'int'
+        },
+        {
+            name: 'comment',
+            type: 'string'
         }
     ]
 });

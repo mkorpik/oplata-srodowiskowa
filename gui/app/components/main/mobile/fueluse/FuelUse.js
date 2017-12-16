@@ -28,26 +28,76 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUse', {
     },
     bodyPadding: 20,
     defaults: {
-        width: '100%',
-        labelAlign: 'top'
+        layout: 'form',    
+        xtype: 'container',            
+        width: '100%'
     },
     items: [
         {
-            xtype: 'textarea',
-            name: 'name',
-            bind: '{editMobileFuelUse.name}',
-            fieldLabel: 'Nazwa'
-        },
+            items: [
+                {
+                    xtype: 'combobox',
+                    name: 'mobile',
+                    fieldLabel: 'Pojazd',
+                    displayField: 'name',
+                    valueField: 'id',
+                    forceSelection: true,    
+                    editable: false,
+                    queryMode: 'local',
+                    bind: {
+                        store: '{mobileList}',
+                        value: '{selectedMobile}'
+                    },
+                    listeners: {
+                        select: 'onMobileChange'
+                    }
+                },
+                {
+                    xtype: 'combobox',
+                    name: 'fuel',
+                    fieldLabel: 'Rodzaj paliwa',
+                    displayField: 'description',
+                    valueField: 'id',
+                    forceSelection: true,    
+                    editable: false,
+                    queryMode: 'local',
+                    store: 'MobileFuel',
+                    queryMode: 'local',
+                    bind: {
+                        value: '{editMobileFuelUse.mobileFuelId}'
+                    }
+                },
+                {
+                    xtype: 'numberfield',
+                    name: 'expend',
+                    bind: '{editMobileFuelUse.expend}',
+                    fieldLabel: 'Zużycie'
+                },
+                {
+                    xtype: 'datefield',
+                    name: 'date',
+                    bind: '{editMobileFuelUse.date}',
+                    fieldLabel: 'Data'
+                },
+                {
+                    xtype: 'textfield',
+                    name: 'comment',
+                    bind: '{editMobileFuelUse.comment}',
+                    fieldLabel: 'Nr faktury'
+                }                
+            ]
+        }
+    ],
+
+    buttons: [
         {
             xtype: 'button',
             text: 'Zapisz',
-            margin: '5 0',
             handler: 'onSave'
         },
         {
             xtype: 'button',
             text: 'Zamknij',
-            margin: '5 0',
             handler: 'onCancel'
         }
     ]

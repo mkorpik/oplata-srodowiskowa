@@ -3,8 +3,58 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseController', {
 
     alias: 'controller.mobileFuelUse',
 
+    listen: {
+        controller: {
+            '*': {
+                fuelUseLoaded: 'fuelUseLoaded'
+            }
+        }
+    }, 
+
+    fuelUseLoaded: function () {
+        this.refreshMobile();
+        this.refreshFuels();
+    },
+
+    refreshMobile: function () {
+        var mobileStore = this.getMobileStore(),
+            fuelUseRecord = this.getViewModel().get('editMobileFuelUse'),
+            mobileId = fuelUseRecord.get('mobile');
+            mobile = null,
+            fuels = [];
+
+        if (mobileId) {
+            mobile = mobileStore.findRecord('id', Number(mobileId.replace('/mobiles/', '')));
+            this.getViewModel().set('selectedMobile', mobile.get('id'));
+        } else {
+            this.getViewModel().set('selectedMobile', null);
+        }
+        
+        if (mobile) {
+            mobile.get('fuels').forEach(function(entry){
+                fuels.push(Number(entry.replace('/mobile_fuels/', '')));
+            });
+        }
+        this.getViewModel().set('avaliableFuels', fuels);
+//        this.filterFuelStore();
+    },
+
+    getMobileStore: function () {
+        return this.getView().lookupViewModel(true).getStore('mobileList');
+    },
+
+    onMobileChange: function() {
+        this.refreshFuels();        
+    },
+
+    refreshFuels: function () {
+
+    },
+    
     onSave: function () {
-        var record = this.getViewModel().get('editMobileFuelUse');
+        var record = this.getViewModel().get('editMobileFuelUse'),
+            selectedMobile = this.getViewModel().get('selectedMobile');
+        record.set('mobile', '/mobiles/' + selectedMobile);
         this.fireEvent('saveMobileFuelUse', record);
         this.getView().close();
     },

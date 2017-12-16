@@ -2,29 +2,55 @@ Ext.define('Oplaty.components.main.mobile.fees.MobileFeesData', {
     extend: 'Ext.grid.Panel',
     xtype: 'mobileFeesData',
 
-    require: [
-        'Oplaty.components.main.mobile.fueluse.FuelUseStore'
-    ],
-    store: {
-        type: 'mobileFuelUse'
-    },
+    controller: 'mobileFeesData',
 
+    require: [
+        'Oplaty.components.main.mobile.fueluse.MobileFeesDataController'
+    ],
+
+    width: 700,
+    height: 300,
+    bind: {
+        store: '{mobileFeesData}'
+    },
     columns: [
         {
             text: 'Pojazd',
-            dataIndex: 'mobile',
-            flex: 3
+            dataIndex: 'mobileId',
+            flex: 1,
+            renderer: 'renderMobile'
+        },
+        {
+            text: 'Rodzaj silnika',
+            dataIndex: 'engineId',
+            flex: 2,
+            renderer: 'renderEngine'
         },
         {
             text: 'Paliwo',
-            dataIndex: 'fuel',
-            flex: 3
+            dataIndex: 'fuelId',
+            flex: 1,
+            renderer: 'renderFuel'
         },
         {
             text: 'Zużycie',
             dataIndex: 'expend',
-            flex: 3
-        }
-        
+            flex: 1
+        },
+        {
+            text: 'Zużycie Mg',
+            dataIndex: 'converted',
+            flex: 1
+        },
+        {
+            text: 'Stawka zł/Mg',
+            dataIndex: 'fee',
+            flex: 1
+        },
+        {
+            text: 'Opłata zł',
+            dataIndex: 'mobileFee',
+            flex: 1
+        }                        
     ]
 });

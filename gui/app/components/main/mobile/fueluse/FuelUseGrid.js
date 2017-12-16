@@ -13,12 +13,14 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseGrid', {
         {
             text: 'Pojazd',
             dataIndex: 'mobile',
-            flex: 3
+            flex: 3,
+            renderer: 'renderMobile'
         },
         {
             text: 'Paliwo',
-            dataIndex: 'fuel',
-            flex: 3
+            dataIndex: 'mobileFuelId',
+            flex: 3,
+            renderer: 'renderFuel'
         },
         {
             text: 'Zużycie',

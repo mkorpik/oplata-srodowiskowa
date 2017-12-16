@@ -9,7 +9,9 @@ Ext.define('Oplaty.components.main.MainModel', {
     requires: [
         'Oplaty.components.main.company.CompanyStore',
         'Oplaty.store.Period',
-        'Oplaty.store.MobileEngine'
+        'Oplaty.store.MobileEngine',
+        'Oplaty.components.main.mobile.mobiles.MobileStore',
+        'Oplaty.components.main.mobile.fueluse.FuelUseStore'
     ],
 
     data: {
@@ -23,7 +25,10 @@ Ext.define('Oplaty.components.main.MainModel', {
     stores: {
         companyList: Ext.create('Oplaty.components.main.company.CompanyStore'),
         periodList: Ext.create('Oplaty.store.Period'),
-        engineList: Ext.create('Oplaty.store.MobileEngine')
+        engineList: Ext.create('Oplaty.store.MobileEngine'),
+        mobileList: Ext.create('Oplaty.components.main.mobile.mobiles.MobileStore'),
+        mobileFuelUseList: Ext.create('Oplaty.components.main.mobile.fueluse.FuelUseStore'),
+        mobileFeesData: Ext.create('Oplaty.components.main.mobile.fees.MobileFeesDataStore')
     }    
     //TODO - add data, formulas and/or methods to support your view
 });

@@ -7,7 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * MobileData
- * @ApiResource
+ * @ApiResource(attributes={"filters"={"mobileData.search_filter"}})
  * @ORM\Table(name="mobile_data"))
  * @ORM\Entity
  */
@@ -47,6 +47,38 @@ class MobileData
      * @ORM\Column(name="mobile_id", type="integer", nullable=true)
      */
     private $mobileId;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="engine_id", type="integer", nullable=true)
+     */
+    private $engineId;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="period_id", type="integer", nullable=true)
+     */
+    private $periodId;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="company_id", type="integer", nullable=true)
+     */
+    private $companyId;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="fee", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $fee;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="mobile_fee", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $mobileFee;
 
     /**
      * @return float
@@ -128,6 +160,85 @@ class MobileData
         $this->id = $id;
     }
 
+    /**
+     * @return int
+     */
+    public function getEngineId()
+    {
+        return $this->engineId;
+    }
+
+    /**
+     * @param int $engineId
+     */
+    public function setEngineId($engineId)
+    {
+        $this->engineId = $engineId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPeriodId()
+    {
+        return $this->periodId;
+    }
+
+    /**
+     * @param int $periodId
+     */
+    public function setPeriodId($periodId)
+    {
+        $this->periodId = $periodId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCompanyId()
+    {
+        return $this->companyId;
+    }
+
+    /**
+     * @param int $companyId
+     */
+    public function setCompanyId($companyId)
+    {
+        $this->companyId = $companyId;
+    }
+
+    /**
+     * @return float
+     */
+    public function getFee()
+    {
+        return $this->fee;
+    }
+
+    /**
+     * @param float $fee
+     */
+    public function setFee($fee)
+    {
+        $this->fee = $fee;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMobileFee()
+    {
+        return $this->mobileFee;
+    }
+
+    /**
+     * @param float $mobileFee
+     */
+    public function setMobileFee($mobileFee)
+    {
+        $this->mobileFee = $mobileFee;
+    }
 
 }
 

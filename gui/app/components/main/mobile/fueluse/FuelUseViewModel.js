@@ -3,6 +3,8 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseViewModel', {
     alias: 'viewmodel.mobileFuelUse',
 
     data: {
-        editMobileFuelUse: null
+        editMobileFuelUse: null,
+        selectedMobile: null,
+        avaliableFuels: []
     }
 });

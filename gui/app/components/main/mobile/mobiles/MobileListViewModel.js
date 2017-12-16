@@ -8,9 +8,5 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListViewModel', {
 
     data: {
 
-    },
-
-    stores: {
-        mobileList: Ext.create('Oplaty.components.main.mobile.mobiles.MobileStore')
     }
 });

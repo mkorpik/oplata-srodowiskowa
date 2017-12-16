@@ -2,7 +2,7 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileList', {
     extend: 'Ext.panel.Panel',
     xtype: 'mobileList',
 
-    viewModel: 'mobileList',
+    //viewModel: 'mobileList',
     controller: 'mobileList',
 
     require: [

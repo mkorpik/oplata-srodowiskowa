@@ -4,10 +4,13 @@ Ext.define('Oplaty.components.main.mobile.mobiles.engine.EngineController', {
     alias: 'controller.engine',
 
     onSave: function () {
-        var record = this.getEngineTree().getSelection();
-        
-        this.fireEvent('engineSelected', record[0]);
-        this.getView().close();
+        var selection = this.getEngineTree().getSelection();
+        if (selection && selection[0].isLeaf()){
+            this.fireEvent('engineSelected', selection[0]);
+            this.getView().close();    
+        } else {
+            Ext.Msg.alert('Info', 'Należy wybrać rodzaj silnika.');            
+        }
     },
 
     getEngineTree: function() {

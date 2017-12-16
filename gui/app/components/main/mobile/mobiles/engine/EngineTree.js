@@ -11,7 +11,6 @@ Ext.define('Oplaty.components.main.mobile.mobiles.engine.EngineTree', {
     ],
 
     controller: 'engine',
-    // viewModel: 'mobile',
 
     modal: true,
     floating: true,
@@ -21,9 +20,7 @@ Ext.define('Oplaty.components.main.mobile.mobiles.engine.EngineTree', {
     height: 500,
     center: true,
     autoShow: true,
-    // title: {
-    //     bind: '{editMobile.name}'
-    // },
+    title: 'Wybierz rodzaj silnika',
     bodyPadding: 20,
     defaults: {
         width: '100%',
@@ -39,13 +36,15 @@ Ext.define('Oplaty.components.main.mobile.mobiles.engine.EngineTree', {
             store: {
                 type: 'engines'
             }
-        },        
+        }   
+    ],
+
+    buttons: [
         {
             xtype: 'button',
-            text: 'Wybierz',
-            margin: '5 0',
+            text: 'Wybierz',            
             handler: 'onSave'
-        }
+        }        
     ]
 
 });

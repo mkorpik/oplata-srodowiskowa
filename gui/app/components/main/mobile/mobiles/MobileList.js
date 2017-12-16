@@ -21,7 +21,8 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileList', {
         listeners: {
             rowdblclick: 'onRowDblClick'
         },
-        width: 600,        
+        width: 600,  
+        height: 300,        
         align: 'right'
     },{
         xtype: 'panel',

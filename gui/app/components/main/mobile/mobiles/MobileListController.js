@@ -24,12 +24,17 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileListController', {
 
     onAddMobile: function () {
         var me = this,
+            newMobile = null,
+            companyId = this.getActiveCompanyId();
+        if (companyId) {    
             newMobile = Ext.create('Oplaty.components.main.mobile.mobiles.MobileModel', {            
             });
-        newMobile.set('company', OplatyConstants.Rest.COMPANY + this.getActiveCompanyId());    
-        //newMobile.set('engineId', 91015);   
-        newMobile.set('fuels', []);                     
-        this.showEditForm(newMobile);
+            newMobile.set('company', OplatyConstants.Rest.COMPANY + this.getActiveCompanyId());    
+            newMobile.set('fuels', []);                     
+            this.showEditForm(newMobile);
+        } else {
+            Ext.Msg.alert('Info', 'Należy wybrać firmę.');            
+        }
     },
 
     onEditMobile: function () {

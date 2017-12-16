@@ -19,62 +19,68 @@ Ext.define('Oplaty.components.main.mobile.mobiles.Mobile', {
     modal: true,
     floating: true,
     closable: true,
+    scrollable: true,
     width: 400,
     height: 500,
+    layout: 'column',
     center: true,
     autoShow: true,
-    title: {
-        bind: '{editMobile.name}'
-    },
+    title: 'Dane pojazdu',
     bodyPadding: 20,
     defaults: {
-        width: '100%',
-        labelAlign: 'top'
+        layout: 'form',    
+        xtype: 'container',            
+        width: '100%'
     },
     items: [
         {
-            xtype: 'textfield',
-            name: 'name',
-            bind: '{editMobile.name}',
-            fieldLabel: 'Nazwa'
-        },
-        {
-            xtype: 'textfield',
-            name: 'registrationNumber',
-            bind: '{editMobile.registrationNumber}',
-            fieldLabel: 'Nr rejestracyjny'
-        },
-        {
-            xtype: 'displayfield',
-            name: 'engineLabel',
-            fieldLabel: 'Rodzaj silnika',
-            bind: '{selectedEngine.description}'
-        },
-        {
-            xtype: 'button',
-            text: 'Wybierz',
-            margin: '5 0',
-            handler: 'onEngineChoise'
-        },             
-        {
-            xtype: 'tagfield',
-            fieldLabel: 'Rodzaj paliwa',                        
-            displayField: 'description',
-            valueField: 'id',
-            store: 'MobileFuel',
-            queryMode: 'local',
-            bind: '{selectedFuels}'       
-        },             
+            items: [
+                {
+                    xtype: 'textfield',
+                    name: 'name',
+                    bind: '{editMobile.name}',
+                    fieldLabel: 'Nazwa'
+                },
+                {
+                    xtype: 'textfield',
+                    name: 'registrationNumber',
+                    bind: '{editMobile.registrationNumber}',
+                    fieldLabel: 'Nr rejestracyjny'
+                },
+                {
+                    xtype: 'displayfield',
+                    name: 'engineLabel',
+                    fieldLabel: 'Rodzaj silnika',
+                    bind: '{selectedEngine.longDesc}'
+                },
+                {
+                    xtype: 'button',
+                    text: 'Wybierz rodzaj silnika',
+                    margin: '5 0',
+                    handler: 'onEngineChoise'
+                },             
+                {
+                    xtype: 'tagfield',
+                    fieldLabel: 'Rodzaj paliwa',                        
+                    displayField: 'description',
+                    valueField: 'id',
+                    store: 'MobileFuel',
+                    queryMode: 'local',
+                    bind: '{selectedFuels}'       
+                }        
+            ]
+        }
+    ],
+    
+    buttons: [
         {
             xtype: 'button',
             text: 'Zapisz',
-            margin: '5 0',
             handler: 'onSave'
         },
         {
             xtype: 'button',
             text: 'Zamknij',
-            margin: '5 0',
             handler: 'onCancel'
         }
     ]

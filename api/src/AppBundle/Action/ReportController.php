@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Action;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,7 +12,7 @@ class ReportController extends Controller
      */
     public function GenerateAction()
     {
-        return $this->render('AppBundle:Report:generate.html.twig', array(
+        return $this->render('@App/Report/generate.html.twig', array(
             // test
         ));
     }

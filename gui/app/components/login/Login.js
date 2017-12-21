@@ -31,7 +31,6 @@ Ext.define('Oplaty.components.login.Login', {
         buttons: [{
             text: 'Login',
             formBind: true,
-            ui: '',
             listeners: {
                 click: 'onLoginClick'
             }

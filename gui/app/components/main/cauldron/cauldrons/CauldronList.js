@@ -2,7 +2,7 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.CauldronList', {
     extend: 'Ext.panel.Panel',
     xtype: 'cauldronList',
 
-    viewModel: 'cauldronList',
+    //viewModel: 'cauldronList',
     controller: 'cauldronList',
 
     require: [
@@ -21,7 +21,8 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.CauldronList', {
         listeners: {
             rowdblclick: 'onRowDblClick'
         },
-        width: 600,        
+        width: 600,     
+        height: 300,     
         align: 'right'
     },{
         xtype: 'panel',

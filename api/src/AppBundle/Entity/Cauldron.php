@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Cauldron
- *
+ * @ApiResource(attributes={"filters"={"cauldron.search_filter"}})
  * @ORM\Table(name="cauldron", indexes={@ORM\Index(name="IDX_BAF4DE03979B1AD6", columns={"company_id"}), @ORM\Index(name="IDX_BAF4DE03AE80F5DF", columns={"department_id"})})
  * @ORM\Entity
  */
@@ -62,6 +63,103 @@ class Cauldron
      * })
      */
     private $department;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @param \DateTime $startDate
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param \DateTime $endDate
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return Department
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+     * @param Department $department
+     */
+    public function setDepartment($department)
+    {
+        $this->department = $department;
+    }
+
 
 
 }

@@ -5,15 +5,17 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.CauldronStore', {
 
     model: 'Oplaty.components.main.cauldron.cauldrons.CauldronModel',
 
-    data: [
-        { id: 1, name: 'A1'},
-        { id: 2, name: 'A2'},
-        { id: 3, name: 'A3'},
-        { id: 4, name: 'A4'}
-    ],
-
     proxy: {
-        type: 'memory',
-        reader: 'json'
-    }
+        type: 'rest',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': "application/json"
+        },
+        url: OplatyConstants.API_PATH + 'cauldrons',
+        reader: {
+            type: 'json'
+        }
+    },
+    autoLoad: false,
+    autoSync: true
 });

@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * CauldronFuelUsed
- *
+ * @ApiResource(attributes={"filters"={"cauldronFuelUsed.search_filter"}})
  * @ORM\Table(name="cauldron_fuel_used", indexes={@ORM\Index(name="IDX_EC72B1E2C16CA547", columns={"cauldron_id"}), @ORM\Index(name="IDX_EC72B1E2E52FF995", columns={"cauldron_kind_id"}), @ORM\Index(name="IDX_EC72B1E2EC8B7ADE", columns={"period_id"})})
  * @ORM\Entity
  */
@@ -54,24 +55,108 @@ class CauldronFuelUsed
     private $cauldron;
 
     /**
-     * @var \AppBundle\Entity\CauldronKind
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CauldronKind")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cauldron_kind_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="period_id", type="integer", nullable=false)
      */
-    private $cauldronKind;
+    private $periodId;
 
     /**
-     * @var \AppBundle\Entity\Period
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Period")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="period_id", referencedColumnName="id")
-     * })
+     * @return \DateTime
      */
-    private $period;
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return float
+     */
+    public function getExpend()
+    {
+        return $this->expend;
+    }
+
+    /**
+     * @param float $expend
+     */
+    public function setExpend($expend)
+    {
+        $this->expend = $expend;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return Cauldron
+     */
+    public function getCauldron()
+    {
+        return $this->cauldron;
+    }
+
+    /**
+     * @param Cauldron $cauldron
+     */
+    public function setCauldron($cauldron)
+    {
+        $this->cauldron = $cauldron;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPeriodId()
+    {
+        return $this->periodId;
+    }
+
+    /**
+     * @param int $periodId
+     */
+    public function setPeriodId($periodId)
+    {
+        $this->periodId = $periodId;
+    }
+
 
 
 }

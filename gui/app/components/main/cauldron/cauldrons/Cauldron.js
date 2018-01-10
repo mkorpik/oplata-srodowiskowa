@@ -23,13 +23,12 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.Cauldron', {
     height: 500,
     center: true,
     autoShow: true,
-    title: {
-        bind: '{editCauldron.name}'
-    },
+    title: 'Dane kotła',
     bodyPadding: 20,
     defaults: {
-        width: '100%',
-        labelAlign: 'top'
+        layout: 'form',    
+        xtype: 'container',            
+        width: '100%'
     },
     items: [
         {

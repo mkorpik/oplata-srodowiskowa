@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * CauldronKind
- *
+ * @ApiResource
  * @ORM\Table(name="cauldron_kind", indexes={@ORM\Index(name="IDX_4B2DE586727ACA70", columns={"parent_id"})})
  * @ORM\Entity
  */
@@ -67,6 +68,117 @@ class CauldronKind
      */
     private $parent;
 
+    /**
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSelectable()
+    {
+        return $this->selectable;
+    }
+
+    /**
+     * @param int $selectable
+     */
+    public function setSelectable($selectable)
+    {
+        $this->selectable = $selectable;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShortDesc()
+    {
+        return $this->shortDesc;
+    }
+
+    /**
+     * @param string $shortDesc
+     */
+    public function setShortDesc($shortDesc)
+    {
+        $this->shortDesc = $shortDesc;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMg()
+    {
+        return $this->mg;
+    }
+
+    /**
+     * @param int $mg
+     */
+    public function setMg($mg)
+    {
+        $this->mg = $mg;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return CauldronKind
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param CauldronKind $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
 
 }
 

@@ -6,7 +6,9 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseListController', {
     listen: {
         controller: {
             '*': {
-                saveCauldronFuelUse: 'saveFuelUse'
+                saveCauldronFuelUse: 'saveFuelUse',
+                cauldronsLoaded: 'cauldronsLoaded',
+                activePeriodChange: 'activePeriodChange'                
             }
         }
     },    
@@ -73,6 +75,55 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseListController', {
 
     getFuelUseGrid: function() {
         return this.getView().down('#idCauldronFuelUseGrid');
+    },
+    
+    cauldronsLoaded: function () {
+        this.reloadFuelUsed();
+    }, 
+
+    getFuelUsedStore: function () {
+        return this.getViewModel().getStore('cauldronFuelUseList');
+    },
+
+    getActiveCompanyId: function () {
+        return this.getView().lookupViewModel().get('activeCompanyId');
+    },
+
+    getActivePeriodId: function () {
+        return this.getView().lookupViewModel().get('activePeriodId');
+    },    
+
+    getCauldronsLoaded: function () {
+        return this.getView().lookupViewModel().get('cauldronsLoaded');
+    },      
+    
+    activePeriodChange: function () {
+        this.reloadFuelUsed();
+    },
+
+    reloadFuelUsed: function () {
+        var store = this.getFuelUsedStore(),
+            companyId = this.getActiveCompanyId(),
+            periodId = this.getActivePeriodId(),
+            cauldronsLoaded = this.getCauldronsLoaded();
+//        store.reload();
+        
+        if (cauldronsLoaded && companyId && periodId) {
+            store.proxy.url = OplatyConstants.API_PATH + 'cauldron_fuel_useds?mobile.company=' + companyId + '&periodId=' + periodId;
+            store.reload();
+            this.getFuelUseGrid().reconfigure(store);           
+        }
+    },
+
+    renderCauldron: function (value, metaData) {
+        var cauldronId = Number(value.replace('/cauldrons/', '')),
+            cauldron = this.getCauldronStore().findRecord('id', cauldronId);
+        return cauldron.get('name');
+
+    },
+    
+    getCauldronStore: function () {
+        return this.getView().lookupViewModel().getStore('cauldronList');
     }
 
 });

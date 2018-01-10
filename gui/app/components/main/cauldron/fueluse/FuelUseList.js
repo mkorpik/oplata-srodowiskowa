@@ -2,7 +2,7 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseList', {
     extend: 'Ext.panel.Panel',
     xtype: 'cauldronFuelUseList',
 
-    viewModel: 'cauldronFuelUseList',
+    //viewModel: 'cauldronFuelUseList',
     controller: 'cauldronFuelUseList',
 
     require: [

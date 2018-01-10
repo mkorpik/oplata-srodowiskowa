@@ -8,9 +8,5 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.CauldronListViewModel', {
 
     data: {
 
-    },
-
-    stores: {
-        cauldronList: Ext.create('Oplaty.components.main.cauldron.cauldrons.CauldronStore')
     }
 });

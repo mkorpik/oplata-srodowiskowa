@@ -36,3 +36,12 @@ services:
         arguments: [ { companyId: 'exact', periodId: 'exact' } ]
         tags: [ 'api_platform.filter' ]
         
+    cauldron.search_filter:
+        parent:  'api_platform.doctrine.orm.search_filter'
+        arguments: [ { company: 'exact' } ]
+        tags: [ 'api_platform.filter' ]         
+
+    cauldronFuelUsed.search_filter:
+        parent:  'api_platform.doctrine.orm.search_filter'
+        arguments: [ { cauldron.company: 'exact', periodId: 'exact' } ]
+        tags: [ 'api_platform.filter' ]

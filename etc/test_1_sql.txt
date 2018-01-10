@@ -1,0 +1,47 @@
+SELECT 
+  "street", "house_nr", 
+  CASE "flat_nr"
+  WHEN '' THEN ''
+  ELSE '/'||"flat_nr"
+  END AS "flat_nr",
+  "postal_code", "city",                        
+  "regon", "longname",
+  "phone" ||' / '|| "fax" as "fax",
+  "email"        
+FROM "company" WHERE "id"=:company_id;
+
+company_id=10
+
+
+SELECT
+  SUM(mobile_fee) as charge  
+FROM 
+  mobile_data md
+LEFT JOIN company c ON c.id=md.company_id
+WHERE
+  md.period_id=:period_id AND  
+  md.company_id=:company_id AND
+  c.voivodship_id=:voivodship_id
+  
+period_id = 203597
+company_id = 10
+voivodship_id = 7
+
+
+SELECT me.id, me.number, me.long_desc, mf.description,mff.fee, sum(md.converted) converted, sum(md.mobile_fee) as fee_sum                        
+FROM 
+  mobile_data md
+LEFT JOIN company c ON c.id=md.company_id
+LEFT JOIN mobile_engine me ON md.engine_id = me.id
+LEFT JOIN mobile_fuel mf ON md.fuel_id = mf.id
+LEFT JOIN mobile_fuel_fees mff ON mff.period_id=:period_id and mff.engine_id = me.id and mff.fuel_id=mf.id
+WHERE
+  md.period_id=:period_id AND  
+  md.company_id=:company_id AND
+  c.voivodship_id=:voivodship_id
+GROUP BY me.id, me.number, me.long_desc, mf.description, mff.fee
+ORDER BY me.id, mf.description  
+
+period_id = 203597
+company_id = 10
+voivodship_id = 7

@@ -9,35 +9,63 @@
 </head>
 <body>
 <?php
+//error_reporting(0);
 
 $company_id = $_GET["company"];
-// Nawiązanie połączenia, wybór bazy danych
-$dbconn = pg_connect("host=sql.eko-soft.nazwa.pl port=5432 dbname=eko-soft_4 user=eko-soft_4 password=Oplaty_inz_2017")
-or die('Nie można nawiązać połączenia: ' . pg_last_error());
+$period_id = $_GET["period"];
+$voivodship_id = $_GET["voivodship"];
 
-$wynik = pg_query($dbconn, '
-SELECT 
-"street", "house_nr", 
-CASE "flat_nr"
-WHEN \'\' THEN \'\'
-ELSE \'/\'||"flat_nr"
-END AS "flat_nr",
-"postal_code", "city",                        
-"regon", "longname",
-"phone" ||\' / \'|| "fax" as "fax",
-"email"        
-FROM "company" WHERE "id"='.$company_id.';');
-if (!$wynik) {
-  echo "Wystąpił błąd.\n";
-  exit;
-}
+if($company_id == "" || $period_id == "" || $voivodship_id == "")
+echo "błąd danych";
+else {
+  // Nawiązanie połączenia, wybór bazy danych
+  $dbconn = pg_connect("host=sql.eko-soft.nazwa.pl port=5432 dbname=eko-soft_4 user=eko-soft_4 password=Oplaty_inz_2017")
+  or die('Nie można nawiązać połączenia: ' . pg_last_error());
 
-while ($wiersz = pg_fetch_row($wynik)) {
-    echo "Ulica: $wiersz[0] <br /> Numer domu: $wiersz[1]";
-    echo "<br />\n";
+  // COMPANY INFO
+  $wynik = pg_query($dbconn, '
+  SELECT 
+  "street", "house_nr", 
+  CASE "flat_nr"
+  WHEN \'\' THEN \'\'
+  ELSE \'/\'||"flat_nr"
+  END AS "flat_nr",
+  "postal_code", "city",                        
+  "regon", "longname",
+  "phone" ||\' / \'|| "fax" as "fax",
+  "email"        
+  FROM "company" WHERE "id"='.$company_id.';');
+  if (!$wynik) {
+    echo "Wystąpił błąd.\n";
+    exit;
+  }
+  echo "COMPANY: <BR>";
+  $wiersz = pg_fetch_array ($wynik, 0, PGSQL_ASSOC);
+  foreach ($wiersz as $key => $value) {
+    echo "<b>$key</b> $value <br>";
   }
 
-
+  // CHARGE
+  $wynik2 = pg_query($dbconn, '
+  SELECT
+  SUM(mobile_fee) as charge  
+  FROM 
+  mobile_data md
+  LEFT JOIN company c ON c.id=md.company_id
+  WHERE
+  md.period_id='.$period_id.' AND  
+  md.company_id='.$company_id.' AND
+  c.voivodship_id='.$voivodship_id.'');
+  if (!$wynik) {
+    echo "Wystąpił błąd.\n";
+    exit;
+  }
+  echo "CHARGE: <BR>";
+  $wiersz2 = pg_fetch_array ($wynik2, 0, PGSQL_ASSOC);
+  foreach ($wiersz2 as $key => $value) {
+    echo "<b>$key</b> $value <br>";
+  }
+}
 
 ?>
 </body>

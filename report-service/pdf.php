@@ -362,6 +362,41 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 // Set some content to print
 $html = <<<EOD
 WYKAZ ZAWIERAJĄCY INFORMACJE O ILOŚCI I RODZAJACH GAZÓW LUB PYŁÓW WPROWADZANYCH DO POWIETRZA, DANE, NA PODSTAWIE KTÓRYCH OKREŚLONO TE ILOŚCI, ORAZ INFORMACJE O WYSOKOŚCI NALEŻNYCH OPŁAT<br>
+<table border="1" style="padding: 2px;" align="center">
+    <tr>
+        <td width="70%">Wprowadzanie gazów lub pyłów do powietrza</td>
+        <td width="30%">rok: $year</td>
+    </tr>
+    <tr>
+        <td width="30%">Podmiot korzystający ze środowiska</td>
+        <td rowspan="1000" width="20%"> Miejsce/miejsca korzystania ze środowiska</td>
+        <td rowspan="1000" width="50%">
+            <table border="1" style="padding: 2px;" align="center">
+                <tr>
+                    <td>Lp.</td>
+                    <td>Adres</td>
+                    <td>Gmina</td>
+                    <td>Powiat</td>
+                </tr>
+                <tr>
+                    <td>test</td>
+                    <td>testowa 18</td>
+                    <td>poznan</td>
+                    <td>poznan</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td width="15%">Nazwa: $wiersz[longname]</td>
+        <td width="15%">Adres: $wiersz[street] $wiersz[house_nr] $wiersz[flat_nr] $wiersz[postal_code] $wiersz[city]</td>
+    </tr>
+    <tr>
+        <td width="15%">REGON: $wiersz[regon] </td>
+        <td width="15%">Telefon/faks: $wiersz[fax]
+        <br>Adres e-mail: $wiersz[email]</td>
+    </tr>
+</table>
 Tabela D<br>
 <table border="1" style="padding: 2px;" align="center">
     <tr>
@@ -388,15 +423,7 @@ Tabela D<br>
         <td width="15%"></td>
     </tr>
 </table>
-EOD;
-
-$pdf->AddPage('L');
-
-// Print text using writeHTMLCell()
-$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-
-// Set some content to print
-$html = <<<EOD
+<br><br>
 Pouczenie: Zawarte w wykazie informacje o wysokości należnych opłat stanowią podstawę do wystawienia tytułu wykonawczego, zgodnie z przepisami ustawy z dnia 17 czerwca 1966 r. o postępowaniu egzekucyjnym w administracji (Dz. U. z 2012 r. poz. 1015, z późn. zm.).
 <br><br><br><br><br>
 <table border="0" align="center">

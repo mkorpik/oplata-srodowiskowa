@@ -343,6 +343,36 @@ EOD;
 // Print text using writeHTMLCell()
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
+// Set some content to print
+$html = <<<EOD
+Pouczenie: Zawarte w wykazie informacje o wysokości należnych opłat stanowią podstawę do wystawienia tytułu wykonawczego, zgodnie z przepisami ustawy z dnia 17 czerwca 1966 r. o postępowaniu egzekucyjnym w administracji (Dz. U. z 2012 r. poz. 1015, z późn. zm.).
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<table border="0" align="center">
+<tr><td width="20%">....................</td><td width="30%">........................................</td><td width="50%">............................................................</td></tr>
+<tr><td width="20%">(data)</td><td width="30%">(podpis osoby wypełniającej)</td><td width="50%">(podpis osoby upoważnionej do reprezentowania podmiotu korzystającego ze środowiska)</td></tr>
+</table>
+EOD;
+
+$pdf->AddPage();
+
+// Print text using writeHTMLCell()
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+// Set some content to print
+$html = <<<EOD
+Pouczenie: Zawarte w wykazie informacje o wysokości należnych opłat stanowią podstawę do wystawienia tytułu wykonawczego, zgodnie z przepisami ustawy z dnia 17 czerwca 1966 r. o postępowaniu egzekucyjnym w administracji (Dz. U. z 2012 r. poz. 1015, z późn. zm.).
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<table border="0" align="center">
+<tr><td width="20%">....................</td><td width="30%">........................................</td><td width="50%">............................................................</td></tr>
+<tr><td width="20%">(data)</td><td width="30%">(podpis osoby wypełniającej)</td><td width="50%">(podpis osoby upoważnionej do reprezentowania podmiotu korzystającego ze środowiska)</td></tr>
+</table>
+EOD;
+
+$pdf->AddPage();
+
+// Print text using writeHTMLCell()
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
 // ---------------------------------------------------------
 
 // Close and output PDF document

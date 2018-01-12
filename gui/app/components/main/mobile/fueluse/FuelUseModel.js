@@ -21,6 +21,11 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseModel', {
         {
             name: 'comment',
             type: 'string'
+        },
+        {
+            name: 'date',
+            type: 'date',
+            dateFormat: 'Y-m-d H:i:s'
         }
     ]
 });

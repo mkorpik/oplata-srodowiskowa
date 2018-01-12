@@ -3,6 +3,7 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseViewModel', {
     alias: 'viewmodel.cauldronFuelUse',
 
     data: {
-        editCauldronFuelUse: null
+        editCauldronFuelUse: null,
+        selectedCauldron: null        
     }
 });

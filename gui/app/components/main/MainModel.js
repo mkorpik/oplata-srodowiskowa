@@ -11,7 +11,10 @@ Ext.define('Oplaty.components.main.MainModel', {
         'Oplaty.store.Period',
         'Oplaty.store.MobileEngine',
         'Oplaty.components.main.mobile.mobiles.MobileStore',
-        'Oplaty.components.main.mobile.fueluse.FuelUseStore'
+        'Oplaty.components.main.mobile.fueluse.FuelUseStore',
+        'Oplaty.components.main.cauldron.cauldrons.CauldronStore',
+        'Oplaty.components.main.cauldron.fueluse.FuelUseStore'
+        
     ],
 
     data: {
@@ -31,7 +34,9 @@ Ext.define('Oplaty.components.main.MainModel', {
         mobileFuelUseList: Ext.create('Oplaty.components.main.mobile.fueluse.FuelUseStore'),
         mobileFeesData: Ext.create('Oplaty.components.main.mobile.fees.MobileFeesDataStore'),
         cauldronList: Ext.create('Oplaty.components.main.cauldron.cauldrons.CauldronStore'),
-        cauldronFuelUseList: Ext.create('Oplaty.components.main.cauldron.fueluse.FuelUseStore')
+        cauldronFuelUseList: Ext.create('Oplaty.components.main.cauldron.fueluse.FuelUseStore'),
+        cauldronFeesData: Ext.create('Oplaty.components.main.cauldron.fees.CauldronFeesDataStore'),
+        departmentList: Ext.create('Oplaty.components.main.department.DepartmentStore')        
     }    
     //TODO - add data, formulas and/or methods to support your view
 });

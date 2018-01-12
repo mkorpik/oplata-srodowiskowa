@@ -38,6 +38,32 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.Cauldron', {
             fieldLabel: 'Nazwa'
         },
         {
+            xtype: 'combobox',
+            name: 'kind',
+            fieldLabel: 'Oddział',
+            displayField: 'name',
+            valueField: 'id',
+            forceSelection: true,    
+            editable: false,
+            queryMode: 'local',
+            bind: {
+                store: '{departmentList}',
+                value: '{editCauldron.departmentId}'
+            }
+        },          
+        {
+            xtype: 'displayfield',
+            name: 'kindLabel',
+            fieldLabel: 'Rodzaj kotła',
+            bind: '{selectedKind.description}'
+        },        
+        {
+            xtype: 'button',
+            text: 'Wybierz rodzaj kotła',
+            margin: '5 0',
+            handler: 'onKindChoise'
+        },          
+        {
             xtype: 'button',
             text: 'Zapisz',
             margin: '5 0',

@@ -16,7 +16,8 @@ Ext.define('Oplaty.Application', {
 
     stores: [        
         'MobileEngine',
-        'MobileFuel'
+        'MobileFuel',
+        'CauldronKind'
         // TODO: add global / shared stores here
     ],
     

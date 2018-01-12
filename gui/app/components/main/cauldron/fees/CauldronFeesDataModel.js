@@ -1,5 +1,5 @@
 
-Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseModel', {
+Ext.define('Oplaty.components.main.cauldron.fees.CauldronFeesDataModel', {
     extend: 'Ext.data.Model',
 
     idProperty: 'id',
@@ -9,10 +9,6 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseModel', {
             name: 'id',
             type: 'auto',
             persist: false
-        },
-        {
-            name: 'expend',
-            type: 'number'
         }
     ]
 });

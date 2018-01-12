@@ -77,7 +77,8 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUse', {
                     xtype: 'datefield',
                     name: 'date',
                     bind: '{editMobileFuelUse.date}',
-                    fieldLabel: 'Data'
+                    fieldLabel: 'Data',
+                    submitFormat: 'Y-m-d H:i:s'
                 },
                 {
                     xtype: 'textfield',

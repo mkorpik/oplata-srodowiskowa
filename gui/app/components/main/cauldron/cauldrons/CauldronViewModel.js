@@ -3,6 +3,7 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.CauldronViewModel', {
     alias: 'viewmodel.cauldron',
 
     data: {
-        editCauldron: null
+        editCauldron: null,
+        selectedKind: null
     }
 });

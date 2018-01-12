@@ -55,14 +55,19 @@ class Cauldron
     private $company;
 
     /**
-     * @var \AppBundle\Entity\Department
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Department")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="department_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="department_id", type="integer", nullable=false)
      */
-    private $department;
+    private $departmentId;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cauldron_kind_id", type="integer", nullable=false)
+     */
+    private $kindId;
 
     /**
      * @return string
@@ -145,21 +150,36 @@ class Cauldron
     }
 
     /**
-     * @return Department
+     * @return int
      */
-    public function getDepartment()
+    public function getKindId()
     {
-        return $this->department;
+        return $this->kindId;
     }
 
     /**
-     * @param Department $department
+     * @param int $kindId
      */
-    public function setDepartment($department)
+    public function setKindId($kindId)
     {
-        $this->department = $department;
+        $this->kindId = $kindId;
     }
 
+    /**
+     * @return int
+     */
+    public function getDepartmentId()
+    {
+        return $this->departmentId;
+    }
+
+    /**
+     * @param int $departmentId
+     */
+    public function setDepartmentId($departmentId)
+    {
+        $this->departmentId = $departmentId;
+    }
 
 
 }

@@ -11,9 +11,10 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseGrid', {
 
     columns: [
         {
-            text: 'Nazwa',
-            dataIndex: 'name',
-            flex: 3
+            text: 'Kocioł',
+            dataIndex: 'cauldron',
+            flex: 3,
+            renderer: 'renderCauldron'
         }
     ]
 });

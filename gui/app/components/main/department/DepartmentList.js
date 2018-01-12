@@ -3,7 +3,7 @@ Ext.define('Oplaty.components.main.department.DepartmentList', {
     xtype: 'departmentList',
     id: 'departmentListId',
 
-    viewModel: 'departmentList',
+    //viewModel: 'departmentList',
     controller: 'departmentList',
 
     require: [

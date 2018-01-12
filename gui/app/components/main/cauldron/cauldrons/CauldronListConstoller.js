@@ -72,6 +72,7 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.CauldronListController', {
             //    renderTo: 'cauldronListId'
             }); 
         cauldronForm.getViewModel().set('editCauldron', cauldronRecord);            
+        this.fireEvent('cauldronLoaded');         
     },
 
     saveCauldron: function(record) {

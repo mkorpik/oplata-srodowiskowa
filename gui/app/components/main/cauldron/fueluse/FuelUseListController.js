@@ -15,9 +15,17 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseListController', {
 
     onAddFuelUse: function () {
         var me = this,
+            newFuelUse = null,
+            companyId = this.getActiveCompanyId(),
+            periodId = this.getActivePeriodId();     
+        if (companyId && periodId) {
             newFuelUse = Ext.create('Oplaty.components.main.cauldron.fueluse.FuelUseModel', {            
             });
-        this.showEditForm(newFuelUse);
+            newFuelUse.set('periodId', periodId);
+            this.showEditForm(newFuelUse);
+        } else {
+            Ext.Msg.alert('Info', 'Należy wybrać firmę i rok.');              
+        }            
     },
 
     onEditFuelUse: function () {
@@ -55,18 +63,19 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseListController', {
         var cauldronFuelUseForm = Ext.create('Oplaty.components.main.cauldron.fueluse.FuelUse',{
             //    renderTo: 'fuelUseListId'
             }); 
-            cauldronFuelUseForm.getViewModel().set('editCauldronFuelUse', cauldronFuelUseRecord);            
+            cauldronFuelUseForm.getViewModel().set('editCauldronFuelUse', cauldronFuelUseRecord); 
+            this.fireEvent('cauldronFuelUseLoaded');            
     },
 
     saveFuelUse: function(record) {
-        var store = this.getViewModel().getStore('cauldronFuelUseList'),
+        var store = this.getFuelUsedStore(),
         cauldronFuelUse = record.data,
         findFuelUse = store.findRecord('id', cauldronFuelUse.id);
+        store.proxy.url = OplatyConstants.API_PATH + 'cauldron_fuel_useds';                
         if (findFuelUse) {
             findFuelUse.data = cauldronFuelUse;
             record.commit();
         } else {
-            cauldronFuelUse.id = store.count() + 1;
             store.add(record);
             record.commit();
         }

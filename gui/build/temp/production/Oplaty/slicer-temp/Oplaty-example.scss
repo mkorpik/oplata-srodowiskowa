@@ -944,6 +944,13 @@ $include-oplaty-components-main-cauldron-cauldrons-cauldronlistviewmodel: dynami
 $include-oplaty-components-main-cauldron-cauldrons-cauldronmodel: dynamic(true);;
 $include-oplaty-components-main-cauldron-cauldrons-cauldronstore: dynamic(true);;
 $include-oplaty-components-main-cauldron-cauldrons-cauldronviewmodel: dynamic(true);;
+$include-oplaty-components-main-cauldron-cauldrons-kind-kindcontroller: dynamic(true);;
+$include-oplaty-components-main-cauldron-cauldrons-kind-kindstore: dynamic(true);;
+$include-oplaty-components-main-cauldron-cauldrons-kind-kindtree: dynamic(true);;
+$include-oplaty-components-main-cauldron-fees-cauldronfeesdata: dynamic(true);;
+$include-oplaty-components-main-cauldron-fees-cauldronfeesdatamodel: dynamic(true);;
+$include-oplaty-components-main-cauldron-fees-cauldronfeesdatastore: dynamic(true);;
+$include-oplaty-components-main-cauldron-fueluse-cauldronfeesdatacontroller: dynamic(true);;
 $include-oplaty-components-main-cauldron-fueluse-fueluse: dynamic(true);;
 $include-oplaty-components-main-cauldron-fueluse-fuelusecontroller: dynamic(true);;
 $include-oplaty-components-main-cauldron-fueluse-fuelusegrid: dynamic(true);;
@@ -1013,8 +1020,10 @@ $include-oplaty-components-main-rainwater-rainwaters-rainwaterviewmodel: dynamic
 $include-oplaty-constants-oplatyconstants: dynamic(true);;
 $include-oplaty-model-admunitmodel: dynamic(true);;
 $include-oplaty-model-enginemodel: dynamic(true);;
+$include-oplaty-model-kindmodel: dynamic(true);;
 $include-oplaty-model-mobilefuelmodel: dynamic(true);;
 $include-oplaty-model-periodmodel: dynamic(true);;
+$include-oplaty-store-cauldronkind: dynamic(true);;
 $include-oplaty-store-commune: dynamic(true);;
 $include-oplaty-store-mobileengine: dynamic(true);;
 $include-oplaty-store-mobilefuel: dynamic(true);;

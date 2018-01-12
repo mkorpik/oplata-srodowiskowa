@@ -153,6 +153,7 @@ $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'colo
 
 // Set some content to print
 $html = <<<EOD
+WYKAZ ZAWIERAJĄCY ZBIORCZE ZESTAWIENIE INFORMACJI O ZAKRESIE KORZYSTANIA ZE ŚRODOWISKA ORAZ O WYSOKOŚCI NALEŻNYCH OPŁAT <br>
 <table border="1" style="padding: 2px;" align="center">
     <tr>
         <td width="80%"><b>Zbiorcze zestawienie informacji o zakresie korzystania ze środowiska oraz o wysokości należnych opłat<sup>1)</sup></b></td>
@@ -360,15 +361,51 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 // Set some content to print
 $html = <<<EOD
+WYKAZ ZAWIERAJĄCY INFORMACJE O ILOŚCI I RODZAJACH GAZÓW LUB PYŁÓW WPROWADZANYCH DO POWIETRZA, DANE, NA PODSTAWIE KTÓRYCH OKREŚLONO TE ILOŚCI, ORAZ INFORMACJE O WYSOKOŚCI NALEŻNYCH OPŁAT<br>
+Tabela D<br>
+<table border="1" style="padding: 2px;" align="center">
+    <tr>
+        <td>Wprowadzenie gazów lub pyłów do powietrza z procesów spalania paliw w silnikach spalinowych</td>
+    </tr>
+    <tr>
+        <td width="5%">Lp.</td>
+        <td width="35%">Rodzaj silnika spalinowego</td>
+        <td width="15%">Rodzaj paliwa</td>
+        <td width="15%">Zużycie paliwa [Mg]</td>
+        <td width="15%">Jednostkowa stawka opłaty [zł/Mg]</td>
+        <td width="15%">Wysokość opłaty [zł]</td>
+    </tr>
+    <tr>
+        <td width="5%">1</td>
+        <td width="35%">2</td>
+        <td width="15%">3</td>
+        <td width="15%">4</td>
+        <td width="15%">5</td>
+        <td width="15%">6</td>
+    </tr>
+    <tr>
+        <td width="85%">Wysokość opłaty ogółem [zł]</td>
+        <td width="15%"></td>
+    </tr>
+</table>
+EOD;
+
+$pdf->AddPage('L');
+
+// Print text using writeHTMLCell()
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+// Set some content to print
+$html = <<<EOD
 Pouczenie: Zawarte w wykazie informacje o wysokości należnych opłat stanowią podstawę do wystawienia tytułu wykonawczego, zgodnie z przepisami ustawy z dnia 17 czerwca 1966 r. o postępowaniu egzekucyjnym w administracji (Dz. U. z 2012 r. poz. 1015, z późn. zm.).
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
 <table border="0" align="center">
 <tr><td width="20%">....................</td><td width="30%">........................................</td><td width="50%">............................................................</td></tr>
 <tr><td width="20%">(data)</td><td width="30%">(podpis osoby wypełniającej)</td><td width="50%">(podpis osoby upoważnionej do reprezentowania podmiotu korzystającego ze środowiska)</td></tr>
 </table>
 EOD;
 
-$pdf->AddPage();
+$pdf->AddPage('L');
 
 // Print text using writeHTMLCell()
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);

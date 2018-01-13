@@ -4,7 +4,10 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileStore', {
     alias: 'store.mobile',
 
     model: 'Oplaty.components.main.mobile.mobiles.MobileModel',
-
+    sorters: [{
+        property: 'name',
+        direction: 'ASC'
+    }],
     proxy: {
         type: 'rest',
         headers: {

@@ -23,6 +23,7 @@ Ext.define('Oplaty.components.main.MainModel', {
         activePeriodId: null,
         mobilesLoaded: false,
         cauldronsLoaded: false,
+        reportVoivodshipId: null,
         loremIpsum: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
 
@@ -36,7 +37,8 @@ Ext.define('Oplaty.components.main.MainModel', {
         cauldronList: Ext.create('Oplaty.components.main.cauldron.cauldrons.CauldronStore'),
         cauldronFuelUseList: Ext.create('Oplaty.components.main.cauldron.fueluse.FuelUseStore'),
         cauldronFeesData: Ext.create('Oplaty.components.main.cauldron.fees.CauldronFeesDataStore'),
-        departmentList: Ext.create('Oplaty.components.main.department.DepartmentStore')        
+        departmentList: Ext.create('Oplaty.components.main.department.DepartmentStore'),
+        vList: Ext.create('Oplaty.store.Voivodship'),        
     }    
     //TODO - add data, formulas and/or methods to support your view
 });

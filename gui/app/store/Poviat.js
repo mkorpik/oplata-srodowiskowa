@@ -4,7 +4,10 @@ Ext.define('Oplaty.store.Poviat', {
     alias: 'store.poviat',
 
     model: 'Oplaty.model.AdmUnitModel',
-
+    sorters: [{
+        property: 'name',
+        direction: 'ASC'
+    }],
     proxy: {
         type: 'rest',
         headers: {

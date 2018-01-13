@@ -19,6 +19,7 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUse', {
     modal: true,
     floating: true,
     closable: true,
+    scrollable: true,    
     width: 400,
     height: 500,
     center: true,
@@ -33,50 +34,58 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUse', {
     },
     items: [
         {
-            xtype: 'combobox',
-            name: 'cauldron',
-            fieldLabel: 'Kocioł',
-            displayField: 'name',
-            valueField: 'id',
-            forceSelection: true,    
-            editable: false,
-            queryMode: 'local',
-            bind: {
-                store: '{cauldronList}',
-                value: '{selectedCauldron}'
-            }
-        },
-        {
-            xtype: 'numberfield',
-            name: 'expend',
-            bind: '{editCauldronFuelUse.expend}',
-            fieldLabel: 'Zużycie'
-        },
-        {
-            xtype: 'datefield',
-            name: 'date',
-            bind: '{editCauldronFuelUse.date}',
-            fieldLabel: 'Data',
-            submitFormat: 'Y-m-d H:i:s'
-        },
-        {
-            xtype: 'textfield',
-            name: 'comment',
-            bind: '{editCauldronFuelUse.comment}',
-            fieldLabel: 'Nr faktury'
-        },
-        {
-            xtype: 'button',
-            text: 'Zapisz',
-            margin: '5 0',
-            handler: 'onSave'
-        },
-        {
-            xtype: 'button',
-            text: 'Zamknij',
-            margin: '5 0',
-            handler: 'onCancel'
+            items: [
+                {
+                    xtype: 'combobox',
+                    name: 'cauldron',
+                    fieldLabel: 'Kocioł*',
+                    displayField: 'name',
+                    valueField: 'id',
+                    forceSelection: true,    
+                    editable: false,
+                    queryMode: 'local',
+                    bind: {
+                        store: '{cauldronList}',
+                        value: '{selectedCauldron}'
+                    },
+                    allowBlank: false  
+                },
+                {
+                    xtype: 'numberfield',
+                    name: 'expend',
+                    bind: '{editCauldronFuelUse.expend}',
+                    fieldLabel: 'Zużycie*',
+                    allowBlank: false  
+                },
+                {
+                    xtype: 'datefield',
+                    name: 'date',
+                    bind: '{editCauldronFuelUse.date}',
+                    fieldLabel: 'Data',
+                    submitFormat: 'Y-m-d H:i:s'
+                },
+                {
+                    xtype: 'textfield',
+                    name: 'comment',
+                    bind: '{editCauldronFuelUse.comment}',
+                    fieldLabel: 'Nr faktury'
+                }        
+            ]
         }
+    ],
+
+    buttons: [
+        {
+            xtype: 'button',
+            text: 'Zapisz',            
+            handler: 'onSave',
+            formBind: true
+        },
+        {
+            xtype: 'button',
+            text: 'Zamknij',            
+            handler: 'onCancel'
+        }        
     ]
 
 });

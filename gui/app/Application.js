@@ -20,6 +20,10 @@ Ext.define('Oplaty.Application', {
         'CauldronKind'
         // TODO: add global / shared stores here
     ],
+
+    init: function () {
+        Ext.Ajax.setDefaultHeaders({ 'Authorization': 'Bearer {eyJleHAiOjE0MzQ3Mjc1MzYsInVzZXJuYW1lIjoia29ybGVvbiIsImlhdCI6IjE0MzQ2NDExMzYifQ}' });
+    },
     
     launch: function () {
         

@@ -52,6 +52,7 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
         if (btn === 'yes') {
             store.remove(selectedFuelUses[0]);
             this.getFuelUseGrid().reconfigure(store);
+            this.fireEvent('mobileFuelUseChanged');    
         }
     },
 
@@ -79,6 +80,7 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
             store.add(record);
             record.commit();
         }
+        this.fireEvent('mobileFuelUseChanged');    
         this.getFuelUseGrid().reconfigure(store);
     },
 
@@ -144,6 +146,15 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseListController', {
     
     getMobileStore: function () {
         return this.getView().lookupViewModel().getStore('mobileList');
+    },
+
+    filterFuelStore: function () {
+        var store = this.getFuelStore(),
+        avaliableFuels = this.getViewModel().get('avaliableFuels');
+        store.clearFilter();   
+        store.filterBy(function (record){
+            return avaliableFuels.indexOf(record.get('id')) > -1;
+        });
     }
 
 });

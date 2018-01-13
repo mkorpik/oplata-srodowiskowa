@@ -19,8 +19,10 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.Cauldron', {
     modal: true,
     floating: true,
     closable: true,
+    scrollable: true,    
     width: 400,
     height: 500,
+    layout: 'column',    
     center: true,
     autoShow: true,
     title: 'Dane kotła',
@@ -32,49 +34,58 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.Cauldron', {
     },
     items: [
         {
-            xtype: 'textarea',
-            name: 'name',
-            bind: '{editCauldron.name}',
-            fieldLabel: 'Nazwa'
+            items: [
+                {
+                    xtype: 'textarea',
+                    name: 'name',
+                    bind: '{editCauldron.name}',
+                    fieldLabel: 'Nazwa',
+                    allowBlank: false
+                },
+                {
+                    xtype: 'combobox',
+                    name: 'kind',
+                    fieldLabel: 'Oddział',
+                    displayField: 'name',
+                    valueField: 'id',
+                    forceSelection: true,    
+                    editable: false,
+                    queryMode: 'local',
+                    bind: {
+                        store: '{departmentList}',
+                        value: '{editCauldron.departmentId}'
+                    },
+                    allowBlank: false
+                },          
+                {
+                    xtype: 'displayfield',
+                    name: 'kindLabel',
+                    fieldLabel: 'Rodzaj kotła',
+                    bind: '{selectedKind.description}'
+                },        
+                {
+                    xtype: 'button',
+                    text: 'Wybierz rodzaj kotła',
+                    margin: '5 0',
+                    handler: 'onKindChoise'
+                }        
+            ]
+        }        
+    ],
+
+    buttons: [
+        {
+            xtype: 'button',
+            text: 'Zapisz',            
+            handler: 'onSave',
+            formBind: true
         },
         {
-            xtype: 'combobox',
-            name: 'kind',
-            fieldLabel: 'Oddział',
-            displayField: 'name',
-            valueField: 'id',
-            forceSelection: true,    
-            editable: false,
-            queryMode: 'local',
-            bind: {
-                store: '{departmentList}',
-                value: '{editCauldron.departmentId}'
-            }
-        },          
-        {
-            xtype: 'displayfield',
-            name: 'kindLabel',
-            fieldLabel: 'Rodzaj kotła',
-            bind: '{selectedKind.description}'
-        },        
-        {
             xtype: 'button',
-            text: 'Wybierz rodzaj kotła',
-            margin: '5 0',
-            handler: 'onKindChoise'
-        },          
-        {
-            xtype: 'button',
-            text: 'Zapisz',
-            margin: '5 0',
-            handler: 'onSave'
-        },
-        {
-            xtype: 'button',
-            text: 'Zamknij',
-            margin: '5 0',
+            text: 'Zamknij',        
             handler: 'onCancel'
         }
+        
     ]
 
 });

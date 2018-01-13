@@ -7,7 +7,8 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.CauldronFeesDataController',
         controller: {
             '*': {
                 cauldronsLoaded: 'cauldronsLoaded',
-                activePeriodChange: 'activePeriodChange'
+                activePeriodChange: 'activePeriodChange',
+                cauldronFuelUseChanged: 'reloadCauldronFeesData'
             }
         }
     }, 
@@ -55,20 +56,6 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.CauldronFeesDataController',
         }
     },
 
-    renderCauldron: function (value, metaData) {
-        var cauldronId = Number(value.replace('/cauldrons/', '')),
-            cauldron = this.getCauldronStore().findRecord('id', cauldronId);
-        return cauldron.get('name');
-
-    },
-
-    renderFuel: function (value, metaData) {
-        var fuelId = Number(value),
-            fuel = this.getFuelStore().findRecord('id', cauldronId);
-        return cauldron.get('description');
-
-    },    
-
     getFuelStore: function () {        
         return Ext.getStore('CauldronFuel');        
     },
@@ -88,15 +75,9 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.CauldronFeesDataController',
 
     },
 
-    renderFuel: function (value, metaData) {
-        var fuelId = Number(value),
-            fuel = this.getFuelStore().findRecord('id', fuelId);
-        return fuel.get('description');
-    },
-
-    renderEngine: function (value, metaData) {
-        var engineId = Number(value),
-            engine = this.getEngineStore().findRecord('id', engineId);
-        return engine.get('description');
+    renderKind: function (value, metaData) {
+        // var kindId = Number(value),
+        //     kind = this.getKindStore().findRecord('id', kindId);
+        return 'opis';//kind.get('description');
     }    
 });

@@ -28,16 +28,21 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseController', {
             this.getViewModel().set('selectedMobile', mobile.get('id'));
         } else {
             this.getViewModel().set('selectedMobile', null);
-        }
-        
-        if (mobile) {
-            mobile.get('fuels').forEach(function(entry){
-                fuels.push(Number(entry.replace('/mobile_fuels/', '')));
-            });
-        }
-        this.getViewModel().set('avaliableFuels', fuels);
-//        this.filterFuelStore();
+        }        
     },
+
+    filterFuelStore: function () {
+        var store = this.getFuelStore(),
+        avaliableFuels = this.getViewModel().get('avaliableFuels');
+        store.clearFilter();   
+        store.filterBy(function (record){
+            return avaliableFuels.indexOf(record.get('id')) > -1;
+        });
+    },    
+
+    getFuelStore: function () {        
+        return Ext.getStore('MobileFuel');        
+    },    
 
     getMobileStore: function () {
         return this.getView().lookupViewModel(true).getStore('mobileList');
@@ -48,7 +53,19 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseController', {
     },
 
     refreshFuels: function () {
+        var selectedMobile = this.getViewModel().get('selectedMobile'),
+            mobileStore = this.getMobileStore(),
+            mobile = null,
+            fuels = [];
 
+        if (selectedMobile) {
+            mobile = mobileStore.findRecord('id', selectedMobile);            
+            mobile.get('fuels').forEach(function(entry){
+                fuels.push(Number(entry.replace('/mobile_fuels/', '')));
+            });
+        }
+        this.getViewModel().set('avaliableFuels', fuels);
+        this.filterFuelStore();        
     },
     
     onSave: function () {
@@ -61,6 +78,11 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUseController', {
 
     onCancel: function () {
         this.getView().close();
+    },
+
+    onClose: function () {
+        var store = this.getFuelStore();
+        store.clearFilter();           
     }
 
 });

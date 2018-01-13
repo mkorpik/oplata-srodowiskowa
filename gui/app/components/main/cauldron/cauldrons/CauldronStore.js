@@ -4,7 +4,10 @@ Ext.define('Oplaty.components.main.cauldron.cauldrons.CauldronStore', {
     alias: 'store.cauldron',
 
     model: 'Oplaty.components.main.cauldron.cauldrons.CauldronModel',
-
+    sorters: [{
+        property: 'name',
+        direction: 'ASC'
+    }],
     proxy: {
         type: 'rest',
         headers: {

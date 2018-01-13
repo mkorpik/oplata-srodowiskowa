@@ -4,7 +4,10 @@ Ext.define('Oplaty.components.main.department.DepartmentStore', {
     alias: 'store.department',
 
     model: 'Oplaty.components.main.department.DepartmentModel',
-
+    sorters: [{
+        property: 'name',
+        direction: 'ASC'
+    }],
     proxy: {
         type: 'rest',
         headers: {

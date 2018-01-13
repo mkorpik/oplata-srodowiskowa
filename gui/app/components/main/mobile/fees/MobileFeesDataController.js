@@ -7,7 +7,8 @@ Ext.define('Oplaty.components.main.mobile.fueluse.MobileFeesDataController', {
         controller: {
             '*': {
                 mobilesLoaded: 'mobilesLoaded',
-                activePeriodChange: 'activePeriodChange'
+                activePeriodChange: 'activePeriodChange',
+                mobileFuelUseChanged: 'reloadMobileFeesData'
             }
         }
     }, 

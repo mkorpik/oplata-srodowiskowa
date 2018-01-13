@@ -39,7 +39,8 @@ Ext.define('Oplaty.components.main.department.Department', {
                     xtype: 'textfield',
                     name: 'name',
                     bind: '{editDepartment.name}',
-                    fieldLabel: 'Nazwa'
+                    fieldLabel: 'Nazwa*',
+                    allowBlank: false
                 },
                 {
                     xtype: 'textfield',
@@ -96,12 +97,13 @@ Ext.define('Oplaty.components.main.department.Department', {
                 {
                     xtype: 'combobox',
                     name: 'voivodship',
-                    fieldLabel: 'Województwo',
+                    fieldLabel: 'Województwo*',
                     displayField: 'name',
                     valueField: 'id',
                     forceSelection: true,    
                     editable: false,
                     queryMode: 'local',
+                    allowBlank: false,
                     bind: {
                         store: '{voivodshipList}',
                         value: '{editDepartment.voivodshipId}'
@@ -113,12 +115,13 @@ Ext.define('Oplaty.components.main.department.Department', {
                 {
                     xtype: 'combobox',
                     name: 'poviat',
-                    fieldLabel: 'Powiat',
+                    fieldLabel: 'Powiat*',
                     displayField: 'name',
                     valueField: 'id',
                     forceSelection: true,
                     editable: false,
                     queryMode: 'local',
+                    allowBlank: false,
                     bind: {
                         store: '{poviatList}',
                         value: '{editDepartment.poviatId}',
@@ -131,12 +134,13 @@ Ext.define('Oplaty.components.main.department.Department', {
                 {
                     xtype: 'combobox',
                     name: 'commune',
-                    fieldLabel: 'Gmina',
+                    fieldLabel: 'Gmina*',
                     displayField: 'name',
                     valueField: 'id',
                     forceSelection: true,
                     editable: false,
                     queryMode: 'local',
+                    allowBlank: false,
                     bind: {
                         store: '{communeList}',
                         value: '{editDepartment.communeId}',
@@ -151,7 +155,8 @@ Ext.define('Oplaty.components.main.department.Department', {
         {
             xtype: 'button',
             text: 'Zapisz',
-            handler: 'onSave'
+            handler: 'onSave',
+            formBind: true
         },
         {
             xtype: 'button',

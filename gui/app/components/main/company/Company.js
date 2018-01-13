@@ -39,13 +39,15 @@ Ext.define('Oplaty.components.main.company.Company', {
                     xtype: 'textarea',
                     name: 'longname',
                     bind: '{editCompany.longname}',
-                    fieldLabel: 'Nazwa'
+                    fieldLabel: 'Nazwa*',
+                    allowBlank: false
                 },
                 {
                     xtype: 'textfield',
                     name: 'shortname',                    
                     bind: '{editCompany.shortname}',
-                    fieldLabel: 'Nazwa skrócona'
+                    fieldLabel: 'Nazwa skrócona*',
+                    allowBlank: false
                 },
                 {
                     xtype: 'textfield',
@@ -114,12 +116,13 @@ Ext.define('Oplaty.components.main.company.Company', {
                 {
                     xtype: 'combobox',
                     name: 'voivodship',
-                    fieldLabel: 'Województwo',
+                    fieldLabel: 'Województwo*',
                     displayField: 'name',
                     valueField: 'id',
                     forceSelection: true,    
                     editable: false,
                     queryMode: 'local',
+                    allowBlank: false,
                     bind: {
                         store: '{voivodshipList}',
                         value: '{editCompany.voivodshipId}'
@@ -169,7 +172,8 @@ Ext.define('Oplaty.components.main.company.Company', {
         {
             xtype: 'button',
             text: 'Zapisz',            
-            handler: 'onSave'
+            handler: 'onSave',
+            formBind: true
         },
         {
             xtype: 'button',

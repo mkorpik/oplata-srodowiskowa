@@ -52,6 +52,7 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseListController', {
         if (btn === 'yes') {
             store.remove(selectedFuelUses[0]);
             this.getFuelUseGrid().reconfigure(store);
+            this.fireEvent('cauldronFuelUseChanged');                       
         }
     },
 
@@ -79,6 +80,7 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseListController', {
             store.add(record);
             record.commit();
         }
+        this.fireEvent('cauldronFuelUseChanged');           
         this.getFuelUseGrid().reconfigure(store);
     },
 

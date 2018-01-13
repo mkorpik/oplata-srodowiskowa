@@ -32,6 +32,9 @@ Ext.define('Oplaty.components.main.mobile.mobiles.Mobile', {
         xtype: 'container',            
         width: '100%'
     },
+    listeners: {
+        close: 'onClose'
+    },    
     items: [
         {
             items: [
@@ -39,7 +42,8 @@ Ext.define('Oplaty.components.main.mobile.mobiles.Mobile', {
                     xtype: 'textfield',
                     name: 'name',
                     bind: '{editMobile.name}',
-                    fieldLabel: 'Nazwa'
+                    fieldLabel: 'Nazwa*',
+                    allowBlank: false
                 },
                 {
                     xtype: 'textfield',
@@ -66,7 +70,8 @@ Ext.define('Oplaty.components.main.mobile.mobiles.Mobile', {
                     valueField: 'id',
                     store: 'MobileFuel',
                     queryMode: 'local',
-                    bind: '{selectedFuels}'       
+                    bind: '{selectedFuels}',
+                    allowBlank: false    
                 }        
             ]
         }
@@ -76,7 +81,8 @@ Ext.define('Oplaty.components.main.mobile.mobiles.Mobile', {
         {
             xtype: 'button',
             text: 'Zapisz',
-            handler: 'onSave'
+            handler: 'onSave',
+            formBind: true
         },
         {
             xtype: 'button',

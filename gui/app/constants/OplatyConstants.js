@@ -3,7 +3,7 @@ Ext.define('Oplaty.constants.OplatyConstants', {
 
     singleton: true,
 
-    API_PATH: 'http://api.oplaty-gui.pl/',
+    API_PATH: 'http://api.oplata-srodowiskowa.pl/',
 
     Rest: {
         COMMUNE: '/adm_communes/',

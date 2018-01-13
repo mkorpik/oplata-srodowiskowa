@@ -85,6 +85,11 @@ Ext.define('Oplaty.components.main.mobile.mobiles.MobileController', {
         store.filterBy(function (record){
             return avaliableFuels.indexOf(record.get('id')) > -1;
         });
-    }
+    },
+
+    onClose: function () {
+        var store = this.getFuelStore();
+        store.clearFilter();           
+    }    
 
 });

@@ -19,6 +19,7 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUse', {
     modal: true,
     floating: true,
     closable: true,
+    scrollable: true,    
     width: 400,
     height: 500,
     center: true,
@@ -31,6 +32,10 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUse', {
         layout: 'form',    
         xtype: 'container',            
         width: '100%'
+    },
+
+    listeners: {
+        close: 'onClose'
     },
     items: [
         {
@@ -50,7 +55,8 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUse', {
                     },
                     listeners: {
                         select: 'onMobileChange'
-                    }
+                    },
+                    allowBlank: false    
                 },
                 {
                     xtype: 'combobox',
@@ -65,13 +71,15 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUse', {
                     queryMode: 'local',
                     bind: {
                         value: '{editMobileFuelUse.mobileFuelId}'
-                    }
+                    },
+                    allowBlank: false    
                 },
                 {
                     xtype: 'numberfield',
                     name: 'expend',
                     bind: '{editMobileFuelUse.expend}',
-                    fieldLabel: 'Zużycie'
+                    fieldLabel: 'Zużycie',
+                    allowBlank: false    
                 },
                 {
                     xtype: 'datefield',
@@ -94,7 +102,8 @@ Ext.define('Oplaty.components.main.mobile.fueluse.FuelUse', {
         {
             xtype: 'button',
             text: 'Zapisz',
-            handler: 'onSave'
+            handler: 'onSave',
+            formBind: true
         },
         {
             xtype: 'button',

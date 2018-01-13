@@ -8,7 +8,8 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
         'Oplaty.components.main.cauldron.CauldronMenu',
         'Oplaty.components.main.rainwater.RainwaterMenu',
         'Oplaty.components.main.fee.FeeMenuViewModel',
-        'Oplaty.components.main.fee.FeeMenuController'
+        'Oplaty.components.main.fee.FeeMenuController',
+        'Oplaty.components.main.report.Report'
     ],
 
 //    viewModel: 'feeMenu',
@@ -122,9 +123,9 @@ Ext.define('Oplaty.components.main.fee.FeeMenu', {
                 title: 'Sprawozdania',
                 iconCls: 'fa-file-text',
                 width: 721,
-                bind: {
-                    html: '{loremIpsum}'
-                }
+                items: [{
+                    xtype: 'report'
+                }]
             }]                    
         }
     ]

@@ -24,7 +24,7 @@ Ext.define('Oplaty.components.main.cauldron.fees.CauldronFeesData', {
             text: 'Rodzaj silnika',
             dataIndex: 'kindId',
             flex: 2,
-            renderer: 'renderEngine'
+            renderer: 'renderKind'
         },
         {
             text: 'Zużycie',

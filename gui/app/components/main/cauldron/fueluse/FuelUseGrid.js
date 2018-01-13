@@ -15,6 +15,11 @@ Ext.define('Oplaty.components.main.cauldron.fueluse.FuelUseGrid', {
             dataIndex: 'cauldron',
             flex: 3,
             renderer: 'renderCauldron'
+        },
+        {
+            text: 'Zużycie',
+            dataIndex: 'expend',
+            flex: 3
         }
     ]
 });

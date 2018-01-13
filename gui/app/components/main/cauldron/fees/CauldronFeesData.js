@@ -5,7 +5,7 @@ Ext.define('Oplaty.components.main.cauldron.fees.CauldronFeesData', {
     controller: 'cauldronFeesData',
 
     require: [
-        'Oplaty.components.main.cauldron.fueluse.CauldronFeesDataController'
+        'Oplaty.components.main.cauldron.fees.CauldronFeesDataController'
     ],
 
     width: 700,

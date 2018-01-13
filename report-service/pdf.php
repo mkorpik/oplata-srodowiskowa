@@ -96,8 +96,7 @@ else {
   while($wiersz3 = pg_fetch_array ($wynik3, $i, PGSQL_ASSOC)) {
     foreach ($wiersz3 as $key => $value) {
       $fee[$i][$key] = $value;
-      if($fee[$i]['number'] == 6)
-        $silniki_spalinowe_sum = $silniki_spalinowe_sum + floatval($fee[$i]['fee_sum']);
+      $silniki_spalinowe_sum = $silniki_spalinowe_sum + floatval($fee[$i]['fee_sum']);
     }
     $i++;
   }

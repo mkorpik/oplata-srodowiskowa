@@ -10,7 +10,7 @@ if($company_id == "" || $period_id == "" || $voivodship_id == "")
 echo "błąd danych";
 else {
   // Nawiązanie połączenia, wybór bazy danych
-  $dbconn = pg_connect("host=sql.eko-soft.nazwa.pl port=5432 dbname=eko-soft_4 user=eko-soft_4 password=Oplaty_inz_2017")
+  $dbconn = pg_connect("host=127.0.0.1 port=5432 dbname=oplaty3 user=postgres password=tralala")
   or die('Nie można nawiązać połączenia: ' . pg_last_error());
 
   // COMPANY INFO

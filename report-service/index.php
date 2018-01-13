@@ -97,6 +97,38 @@ else {
     }
     $i++;
   }
+
+  $wynik4 = pg_query($dbconn, '
+  SELECT 
+    c.cauldron_kind_id, ck.short_desc,COUNT(*) cc,sum(cd.expend) expend, cd.fee, SUM(cd.cauldron_fee) fee_sum
+  FROM 
+    cauldron_data cd
+  LEFT JOIN
+    cauldron c ON cd.cauldron_id = c.id
+  LEFT JOIN
+    department d ON d.id = c.department_id
+  LEFT JOIN
+    cauldron_kind ck ON ck.id=cd.cauldron_kind_id
+  WHERE
+    cd.period_id = 203597 AND
+    d.company_id = 10 AND
+    d.voivodship_id = 7
+  GROUP BY 
+    cd.fee, c.cauldron_kind_id, ck.short_desc
+  Order BY c.cauldron_kind_id');
+if (!$wynik4) {
+  echo "Wystąpił błąd.\n";
+  exit;
+}
+
+$i = 0;
+while($wiersz4 = pg_fetch_array ($wynik4, $i, PGSQL_ASSOC)) {
+  echo " <BR>FEE: <BR>";
+  foreach ($wiersz4 as $key => $value) {
+    echo "<b>$key</b> $value <br>";
+  }
+  $i++;
+}
 }
 
 ?>

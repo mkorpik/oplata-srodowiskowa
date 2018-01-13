@@ -61,6 +61,10 @@ else {
     $i++;
   }
 
+  $charge_floor = floor($charge[0]['charge']);
+  if($charge[0]['charge']>800) $fee_sum = $charge[0]['charge'];
+  else $fee_sum = 0;
+
   // FEE
   $wynik3 = pg_query($dbconn, '
   SELECT me.id, me.number, me.long_desc, mf.description,mff.fee, sum(md.converted) converted, sum(md.mobile_fee) as fee_sum                        
@@ -82,13 +86,29 @@ else {
   }
 
   $i = 0;
+  $j = 0;
+  $z = 0;
+  $silniki_spalinowe_sum = 0.0;
+  $kotly_sum = 0;
   $fee = array();
+  $euro1 = array();
+  $euro5 = array();
   while($wiersz3 = pg_fetch_array ($wynik3, $i, PGSQL_ASSOC)) {
     foreach ($wiersz3 as $key => $value) {
       $fee[$i][$key] = $value;
+      if($fee[$i]['number'] == 6)
+        $silniki_spalinowe_sum = $silniki_spalinowe_sum + floatval($fee[$i]['fee_sum']);
     }
     $i++;
   }
+}
+
+function buduj_tabele_d($fee) {
+    $html = "";
+    foreach ($fee as $key => $value) {
+        $html = $html.'<tr><td>'.$value['number']."</td><td>".$value['long_desc']."</td><td>".$value['description']."</td><td>".$value['converted']."</td><td>".$value['fee']."</td><td>".$value['fee_sum']."</td></tr>";
+    }
+    return $html;
 }
 
 //var_dump($wiersz);
@@ -163,13 +183,13 @@ WYKAZ ZAWIERAJĄCY ZBIORCZE ZESTAWIENIE INFORMACJI O ZAKRESIE KORZYSTANIA ZE ŚR
         <td colspan="2" align="center"><b><i>Podmiot korzystający ze środowiska</i></b></td>
     </tr>
     <tr>
-        <td width="50%">Nazwa: $wiersz[longname]</td>
-        <td width="50%">Adres: $wiersz[street] $wiersz[house_nr] $wiersz[flat_nr] $wiersz[postal_code] $wiersz[city]</td>
+        <td width="50%">Nazwa: {$company[0][longname]}</td>
+        <td width="50%">Adres: {$company[0][street]} {$company[0][house_nr]} {$company[0][flat_nr]} {$company[0][postal_code]} {$company[0][city]}</td>
     </tr>
     <tr>
-        <td width="50%">REGON: $wiersz[regon] </td>
-        <td width="50%">Telefon/faks: $wiersz[fax]
-        <br>Adres e-mail: $wiersz[email]</td>
+        <td width="50%">REGON: {$company[0][regon]} </td>
+        <td width="50%">Telefon/faks: {$company[0][fax]}
+        <br>Adres e-mail: {$company[0][email]}</td>
     </tr>
     <tr>
         <td width="10%">Lp.</td>
@@ -206,7 +226,7 @@ WYKAZ ZAWIERAJĄCY ZBIORCZE ZESTAWIENIE INFORMACJI O ZAKRESIE KORZYSTANIA ZE ŚR
         <td width="10%">1.4</td>
         <td width="50%">Silniki spalinowe</td>
         <td width="10%">D</td>
-        <td width="30%"></td>
+        <td width="30%">{$silniki_spalinowe_sum}</td>
     </tr>
     <tr>
         <td width="10%">1.5</td>
@@ -217,7 +237,7 @@ WYKAZ ZAWIERAJĄCY ZBIORCZE ZESTAWIENIE INFORMACJI O ZAKRESIE KORZYSTANIA ZE ŚR
     <tr>
         <td width="10%">I</td>
         <td width="60%">Wysokość opłaty za wprowadzanie gazów lub pyłów do powietrza ogółem</td>
-        <td width="30%"></td>
+        <td width="30%">{$charge_floor}</td>
     </tr>
     <tr>
         <td width="10%">2</td>
@@ -336,7 +356,7 @@ WYKAZ ZAWIERAJĄCY ZBIORCZE ZESTAWIENIE INFORMACJI O ZAKRESIE KORZYSTANIA ZE ŚR
 <table border="1" style="padding: 2px;" align="center">
     <tr>
         <td width="70%">Suma opłat ogółem [zł]</td>
-        <td width="30%"></td>
+        <td width="30%">{$fee_sum}</td>
     </tr>
 </table>
 EOD;
@@ -358,6 +378,8 @@ $pdf->AddPage();
 
 // Print text using writeHTMLCell()
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+$tabela_d = buduj_tabele_d($fee);
 
 // Set some content to print
 $html = <<<EOD
@@ -388,13 +410,13 @@ WYKAZ ZAWIERAJĄCY INFORMACJE O ILOŚCI I RODZAJACH GAZÓW LUB PYŁÓW WPROWADZA
         </td>
     </tr>
     <tr>
-        <td width="15%">Nazwa: $wiersz[longname]</td>
-        <td width="15%">Adres: $wiersz[street] $wiersz[house_nr] $wiersz[flat_nr] $wiersz[postal_code] $wiersz[city]</td>
+        <td width="15%">Nazwa: {$company[0][longname]}</td>
+        <td width="15%">Adres: {$company[0][street]} {$company[0][house_nr]} {$company[0][flat_nr]} {$company[0][postal_code]} {$company[0][city]}</td>
     </tr>
     <tr>
-        <td width="15%">REGON: $wiersz[regon] </td>
-        <td width="15%">Telefon/faks: $wiersz[fax]
-        <br>Adres e-mail: $wiersz[email]</td>
+        <td width="15%">REGON: {$company[0][regon]} </td>
+        <td width="15%">Telefon/faks: {$company[0][fax]}
+        <br>Adres e-mail: {$company[0][email]}</td>
     </tr>
 </table>
 Tabela D<br>
@@ -418,9 +440,10 @@ Tabela D<br>
         <td width="15%">5</td>
         <td width="15%">6</td>
     </tr>
+    {$tabela_d}
     <tr>
         <td width="85%">Wysokość opłaty ogółem [zł]</td>
-        <td width="15%"></td>
+        <td width="15%">{$charge[0]['charge']}</td>
     </tr>
 </table>
 <br><br>
